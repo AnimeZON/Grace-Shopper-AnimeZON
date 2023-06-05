@@ -1,3 +1,4 @@
+const { DOUBLE } = require('sequelize');
 const conn = require('./conn');
 const { STRING, UUID, UUIDV4 } = conn.Sequelize;
 
@@ -14,6 +15,21 @@ const Product = conn.define('product', {
       notEmpty: true
     }
   },
+  image: {
+    type: STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: true
+    }
+  },
+  price: {
+    type: DOUBLE,
+    allowNull: false,
+  },
+  description: {
+    type: STRING,
+    allowNull: false
+  }
 });
 
 module.exports = Product;
