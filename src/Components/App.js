@@ -49,9 +49,7 @@ const App = ()=> {
                   <button>Add to Your Cart</button>
                 ): null
               }
-              {
-                !!auth.id && <button>Add to Your Cart</button>
-              }
+            
             </li>
           );
         })
