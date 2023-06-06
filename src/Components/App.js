@@ -32,7 +32,7 @@ const App = ()=> {
           <nav>
             <Link to='/'>Home</Link>
             <Link to='/cart'>Cart</Link>
-            <Link to='/edit'>Edit</Link>
+            <Link to='/edit'>EditAccount</Link>
           </nav>
           <Routes>
             <Route path='/cart' element={ <Cart /> } />

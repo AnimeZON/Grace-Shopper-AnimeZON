@@ -10,6 +10,7 @@ const EditAccount = () => {
     const [address, setAddress] = useState(auth.address);
     const [payment, setPayment] = useState(auth.payment);
     const [email, setEmail] = useState(auth.email);
+    
     return (
         <div>
             <form>
