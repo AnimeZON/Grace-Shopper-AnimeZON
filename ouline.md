@@ -26,8 +26,12 @@ Product Component
 -Admin Product List
     -Product List
         -Edit
+            -Edit Product Component
         -Add
         -Remove
+-Edit Product Component
+    -Form
+    -Submit
 
 -Cart Component
     -List of Added items
