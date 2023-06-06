@@ -1,5 +1,10 @@
 const Sequelize = require('sequelize');
 const config = {
+    // database: 'acme_shopping_db',
+    // dialect: 'postgres',
+    // logging: false,
+    // password: 'password',
+    // username: 'postgres',
 };
 
 if(process.env.QUIET){

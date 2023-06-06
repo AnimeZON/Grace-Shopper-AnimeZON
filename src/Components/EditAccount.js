@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 const EditAccount = () => {
@@ -10,6 +10,7 @@ const EditAccount = () => {
     const [address, setAddress] = useState(auth.address);
     const [payment, setPayment] = useState(auth.payment);
     const [email, setEmail] = useState(auth.email);
+    
     return (
         <div>
             <form>

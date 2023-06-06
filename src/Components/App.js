@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import Home from './Home';
 import Login from './Login';
 import Cart from './Cart';
+import EditAccount from './EditAccount'
 import { useSelector, useDispatch } from 'react-redux';
 import { loginWithToken, fetchCart, fetchProducts } from '../store';
 import { Link, Routes, Route } from 'react-router-dom';
@@ -31,9 +32,11 @@ const App = ()=> {
           <nav>
             <Link to='/'>Home</Link>
             <Link to='/cart'>Cart</Link>
+            <Link to='/edit'>EditAccount</Link>
           </nav>
           <Routes>
             <Route path='/cart' element={ <Cart /> } />
+            <Route path='/edit' element={ <EditAccount /> } />
           </Routes>
         </div>
       )
