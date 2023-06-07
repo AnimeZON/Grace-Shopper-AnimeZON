@@ -3,6 +3,7 @@ import Home from './Home';
 import Login from './Login';
 import Cart from './Cart';
 import EditAccount from './EditAccount'
+import SingleProduct from './SingleProduct'
 import { useSelector, useDispatch } from 'react-redux';
 import { loginWithToken, fetchCart, fetchProducts } from '../store';
 import { Link, Routes, Route } from 'react-router-dom';
@@ -37,6 +38,7 @@ const App = ()=> {
           <Routes>
             <Route path='/cart' element={ <Cart /> } />
             <Route path='/edit' element={ <EditAccount /> } />
+            <Route path='/products/:id' element={<SingleProduct/>} />
           </Routes>
         </div>
       )
