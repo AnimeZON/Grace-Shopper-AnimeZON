@@ -18,6 +18,7 @@ const ProductList = ()=> {
         />
         <p>Item Name: {product.name} </p>
         <p>Item Price {product.price} </p>
+        <p>{product?.quantity}</p>
         <button>Add to Cart</button>
         </div>
 )})}
