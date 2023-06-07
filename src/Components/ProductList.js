@@ -27,6 +27,7 @@ const ProductList = ()=> {
         <p>Item Name: {product.name} </p>
         <p>Item Price {product.price} </p>
         <button onClick={() => addToCart(product)}>Add to Cart</button>
+
         </div>
 )})}
     </div>
