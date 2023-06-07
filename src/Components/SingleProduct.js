@@ -8,7 +8,7 @@ const SingleProduct = ()=> {
   const { id } = useParams();
   const { auth } = useSelector(state => state);
 
-  const singleProduct = product.find( singleProduct => singleProduct.id === id*1);
+  const singleProduct = product.find( singleProduct => singleProduct.id === id);
   //be defensive!!
   if(!singleProduct){
     return null;
