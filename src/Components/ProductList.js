@@ -7,7 +7,9 @@ const ProductList = ()=> {
   return (
     <div className="products">
       <h1>Products</h1>
+      <div>
       {products.map((product) => {
+        return (
         <div>
         <img 
         src={product.image}
@@ -18,7 +20,8 @@ const ProductList = ()=> {
         <p>Item Price {product.price} </p>
         <button>Add to Cart</button>
         </div>
-})}
+)})}
+    </div>
     </div>
   );
 };
