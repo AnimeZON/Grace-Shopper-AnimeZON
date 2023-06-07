@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import Home from './Home';
 import Login from './Login';
+import ProductList from './ProductList';
 import Cart from './Cart';
 import EditAccount from './EditAccount'
 import SingleProduct from './SingleProduct'
@@ -39,6 +40,7 @@ const App = ()=> {
             <Route path='/cart' element={ <Cart /> } />
             <Route path='/edit' element={ <EditAccount /> } />
             <Route path='/products/:id' element={<SingleProduct/>} />
+            <Route path ='/' element ={ <ProductList /> } />
           </Routes>
         </div>
       )

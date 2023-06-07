@@ -4,10 +4,20 @@ import { useSelector, useDispatch } from 'react-redux';
 const ProductList = ()=> {
   const { products } = useSelector(state => state);
   // const dispatch = useDispatch();
+
+  const addToCart = async (product) => {
+    try {
+      await User.addToCart({ product, quantity: 1 });
+    } catch (error) {
+    }
+  };
+
   return (
     <div className="products">
       <h1>Products</h1>
+      <div>
       {products.map((product) => {
+        return (
         <div>
         <img 
         src={product.image}
@@ -16,9 +26,11 @@ const ProductList = ()=> {
         />
         <p>Item Name: {product.name} </p>
         <p>Item Price {product.price} </p>
-        <button>Add to Cart</button>
+        <button onClick={() => addToCart(product)}>Add to Cart</button>
+
         </div>
-})}
+)})}
+    </div>
     </div>
   );
 };

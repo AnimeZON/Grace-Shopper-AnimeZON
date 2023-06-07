@@ -10,6 +10,15 @@ export const fetchUsers = createAsyncThunk("fetchUsers", async()=>{
   }
 })
 
+export const updateUser = createAsyncThunk("updateUsers", async(data, id)=>{
+  try{
+    const response = await axios.put(`/api/users/${id}`, data);
+    return response.data;
+  }catch(err){
+    console.log(err)
+  }
+})
+
 const usersSlice = createSlice({
   name:"user",
   initialState: [],

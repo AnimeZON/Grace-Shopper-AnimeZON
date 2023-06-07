@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { updateUser } from '../store/user';
 
 const EditAccount = () => {
     const { auth } = useSelector(state => state);
@@ -10,10 +11,15 @@ const EditAccount = () => {
     const [address, setAddress] = useState(auth.address);
     const [payment, setPayment] = useState(auth.payment);
     const [email, setEmail] = useState(auth.email);
+
+    const handleSubmit = (evt) => {
+        evt.preventDefault();
+        dispatch(updateUser({username,password,address,payment,email}))
+    }
     
     return (
         <div>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <h2>Edit Account Info</h2>
                 <label>Username</label>
                 <input value={username} onChange={(e) => setUsername(e.target.value)} />
