@@ -20,7 +20,7 @@ const userData1 = {
   fullName: 'Moe Johnson',
   phone: '777-888-9999',
   city: 'South City',
-  addState: 'Florida',
+  contState: 'Florida',
   zip: "11224"
 }
 
@@ -35,7 +35,7 @@ const userData2 = {
   fullName: 'Lucy Gents',
   phone: '777-888-9999',
   city: 'South City',
-  addState: 'Florida',
+  contState: 'Florida',
   zip: "11224"
 }
 
@@ -50,7 +50,22 @@ const userData3 = {
   fullName: 'Larry Long',
   phone: '777-888-9999',
   city: 'South City',
-  addState: 'Florida',
+  contState: 'Florida',
+  zip: "11224"
+}
+
+const userData4 = {
+  username: 'ethyl',
+  password: '123',
+  isAdmin: true,
+  address: '1234 Baybay Street',
+  payment: 'Credit',
+  email: 'username@gmail.com',
+  country: 'United States',
+  fullName: 'Ethyl Drake',
+  phone: '777-888-9999',
+  city: 'South City',
+  contState: 'Florida',
   zip: "11224"
 }
 
@@ -63,7 +78,7 @@ const syncAndSeed = async () => {
     Product.create({ name: 'Luffy', image: 'Picture.img', price: 234.45, description: 'A statue of Luffy', quantity: 10 }),
     Product.create({ name: 'Zoro', image: 'Picture.img', price: 234.45, description: 'A statue of Zoro' }),
     Product.create({ name: 'Nami', image: 'Picture.img', price: 234.45, description: 'A statue of Nami' }),
-    User.create({ username: 'ethyl', password: '123', isAdmin: true, address: '1234 Baybay Street', payment: 'Credit', email: 'username@gmail.com' }),
+    User.create(userData4),
   ]);
 
   const cart = await ethyl.getCart();

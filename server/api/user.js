@@ -1,7 +1,7 @@
 const router = require('express').Router()
 const { User } = require('../db')
 
-// route for all products
+
 router.get('/', async( req, res, next) => {
   try{
     const users = await User.findAll()
@@ -11,7 +11,6 @@ router.get('/', async( req, res, next) => {
   }
 })
 
-// Get /api/products/:productId
 router.get('/:id', async(req, res, next) => {
   try {
     const user = await User.findByPk(req.params.id)
@@ -20,7 +19,6 @@ router.get('/:id', async(req, res, next) => {
     next(err)
   }
 })
-
 
 router.post('/', async(req, res, next) => {
   try {
@@ -31,7 +29,6 @@ router.post('/', async(req, res, next) => {
   }
 })
 
-// edit product
 router.put('/:id', async(req, res, next) => {
   try {
     const user = await User.findByPk(req.params.id);
@@ -41,7 +38,6 @@ router.put('/:id', async(req, res, next) => {
   }
 })
 
-// delete product
 router.delete('/:productId', async(req, res, next) => {
   try {
     const user = await User.findByPk(req.params.productId);
