@@ -5,6 +5,7 @@ import ProductList from './ProductList';
 import Cart from './Cart';
 import EditAccount from './EditAccount'
 import SingleProduct from './SingleProduct'
+import RegisterAccount from './RegisterAccount.js';
 import { useSelector, useDispatch } from 'react-redux';
 import { loginWithToken, fetchCart, fetchProducts } from '../store';
 import { Link, Routes, Route } from 'react-router-dom';
@@ -45,6 +46,7 @@ const App = () => {
           <Route path='/product/:id' element={<SingleProduct />} />
           <Route path='/login' element={<Login />} />
           <Route path='/cart' element={<Cart />} />
+          <Route path='/register' element={<RegisterAccount />} />
         </Routes>
       </div>
     </div>
