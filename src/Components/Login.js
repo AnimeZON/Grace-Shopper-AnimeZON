@@ -46,7 +46,7 @@ const Login = ()=> {
           value={ credentials.password }
           onChange = { onChange }
         />
-        <button>Login</button>
+        <button>Sign In</button>
       </form>
     </div>
   );
