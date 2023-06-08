@@ -32,7 +32,6 @@ const App = () => {
       {
         auth.id ? (
           <div>
-            <Home />
             <Routes>
               <Route path='/editAccount' element={<EditAccount />} />
             </Routes>
