@@ -4,9 +4,43 @@ import { logout } from "../store";
 import { Link } from "react-router-dom";
 
 const Checkout = () => {
-  const {} = useSelector((state) => state);
+  const { auth, user } = useSelector((state) => state);
   const dispatch = useDispatch();
+  // const [firstName, setFirstName] = useState(auth.firstName);
+  // const [lastName, setLastName] = useState(auth.lastName);
+  // const [address, setAddress] = useState(auth.address);
+  // const [payment, setPayment] = useState(auth.payment);
+  // const [email, setEmail] = useState(auth.email);
+  // const [country, setCountry] = useState(auth.country);
+  // const [fullName, setFullName] = useState(auth.fullName);
+  // const [phone, setPhone] = useState(auth.phone);
+  // const [city, setCity] = useState(auth.city);
+  // const [contState, setContState] = useState(auth.contState);
+  // const [zip, setZip] = useState(auth.zip);
+
+  // const handleSubmit = (evt) => {
+  //     evt.preventDefault();
+  //     const data = {
+  //       firstName,
+  //       lastName,
+  //         username,
+  //         address,
+  //         payment,
+  //         email,
+  //         country,
+  //         fullName,
+  //         phone,
+  //         city,
+  //         contState,
+  //         zip
+  //     };
+  //     const id = auth.id
+  //     dispatch(updateUser({data, id}));
+  // }
+
+
   return (
+    !user ? (
     <div>
       <p>Payment</p>
       <form>
@@ -36,9 +70,10 @@ const Checkout = () => {
         <Link className="returnToCart">Return to cart</Link>
         <button>Continue to shipping</button>
       </form>
+      </div>
+      ) :
       <div className="checkoutCart">
         <p>import cart here</p>
-      </div>
     </div>
   );
 };
