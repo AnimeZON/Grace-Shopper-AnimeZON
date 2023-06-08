@@ -1,46 +1,43 @@
-import React, {useState} from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-//import { updateProduct } from '../src/store';
-import { useParams , Link} from 'react-router-dom';
+import React, {useEffect, useState} from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { fetchSingleProduct, updateSingleProduct} from '../store/product';
 
-const SingleProduct = ()=> {
-  const { product } = useSelector(state => state);
+const SingleProduct = () => {
+  const dispatch = useDispatch();
   const { id } = useParams();
-  const { auth } = useSelector(state => state);
 
-  const singleProduct = product.find( singleProduct => singleProduct.id === id);
-  //be defensive!!
-  if(!singleProduct){
-    return null;
-  }
+  const productId = id;
+  const quantity = 1;
+  let singleProduct = useSelector(state => state.singleProduct)
+  const {name, image, price, description } = singleProduct
+  console.log("Single Product:", singleProduct)
 
-  let qty = 1;
 
-  const [image, setImage] = useState(singleProduct.image);
-  const [name, setName] = useState(singleProduct.name);
-  const [description, setDescription] = useState(singleProduct.description);
-  const [price, setPrice] = useState(singleProduct.price);
-  const [quantity, setQuantity] = useState(qty);
-
+  useEffect(() => {
+    console.log("working")
+    dispatch(fetchSingleProduct(productId))
+  }, []);
+  
   return (
-    auth.isadmin ?   
-    <form>
-      <div>
-        <input value={image} onChange={(e) => setImage(e.target.value)} />
-      </div>
-      <div>
-        <button>Save Changes</button>
-      </div>
-      <div>
-        <div>
-        <input value={name} onChange={(e) => setName(e.target.value)} />
-        <input value={price} onChange={(e) => setPrice(e.target.value)} />
-        <input value={description} onChange={(e) => setDescription(e.target.value)} />
-      </div>
-        </div>
+    // auth.isadmin ?   
+    // <form>
+    //   <div>
+    //     <input value={image} onChange={(e) => setImage(e.target.value)} />
+    //   </div>
+    //   <div>
+    //     <button>Save Changes</button>
+    //   </div>
+    //   <div>
+    //     <div>
+    //     <input value={name} onChange={(e) => setName(e.target.value)} />
+    //     <input value={price} onChange={(e) => setPrice(e.target.value)} />
+    //     <input value={description} onChange={(e) => setDescription(e.target.value)} />
+    //   </div>
+    //     </div>
 
-    </form> 
-    : // NON ADMIN VIEW
+    // </form> 
+    // : // NON ADMIN VIEW
       <div>
         <div>
           <img src={singleProduct.image}/>
@@ -77,7 +74,7 @@ const SingleProduct = ()=> {
           <div>
             <button>Add to Cart</button>
           </div>
-        </div>
+        </div> 
       </div>
   );
 };
