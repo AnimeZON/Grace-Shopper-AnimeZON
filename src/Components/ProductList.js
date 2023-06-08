@@ -1,10 +1,12 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { fetchProducts } from '../store/products'
+
 
 const ProductList = ()=> {
   const { products } = useSelector(state => state);
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const addToCart = async (product) => {
     try {
@@ -12,6 +14,11 @@ const ProductList = ()=> {
     } catch (error) {
     }
   };
+ 
+  useEffect(() => {
+    console.log("working")
+    dispatch(fetchProducts())
+  }, []);
 
   return (
     <div className="products">
