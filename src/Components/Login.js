@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
 import { attemptLogin } from '../store';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+
 
 const Login = ()=> {
+  const {auth} = useSelector(state => state);
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [credentials, setCredentials] = useState({
     username: '',
@@ -13,9 +17,17 @@ const Login = ()=> {
     setCredentials({...credentials, [ ev.target.name ]: ev.target.value });
   };
 
-  const login = (ev)=> {
+  const login = async(ev)=> {
     ev.preventDefault();
-    dispatch(attemptLogin(credentials));
+    try {
+      dispatch(attemptLogin(credentials));
+      navigate('/')
+    
+    } catch(err) {
+      console.log(err)
+    }
+   
+    
   };
   return (
     <div>
@@ -29,11 +41,12 @@ const Login = ()=> {
           />
         <input
           placeholder='password'
+          type='password'
           name = 'password'
           value={ credentials.password }
           onChange = { onChange }
         />
-        <button>Login</button>
+        <button>Sign In</button>
       </form>
     </div>
   );
