@@ -10,6 +10,7 @@ export const fetchProducts = createAsyncThunk("fetchProducts", async()=>{
   }
 })
 
+
 const productsSlice = createSlice({
   name:"product",
   initialState: [],
@@ -18,6 +19,7 @@ const productsSlice = createSlice({
     builder.addCase(fetchProducts.fulfilled, (state, action)=>{
       return action.payload;
     })
+   
   }
 })
 
