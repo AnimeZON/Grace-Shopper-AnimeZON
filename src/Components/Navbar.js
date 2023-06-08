@@ -27,68 +27,59 @@ const Navbar = () => {
   };
 
   return (
-
-    <div className='navbar'>
-      {/* Home button clicking the image or text AnimeZon will take user to home page */}
+    <div className='navbar'>      
       <nav>
-      <Link to='/'>
-        <div className="home_logo">
-          AnimeZon
-        </div>          
-      </Link>
+        <Link to='/'>
+          <div className="home_logo">
+            AnimeZon
+          </div>          
+        </Link>
 
-      <div className='nav_search'>
-        <input type='text' />
-      </div>
-      
-      <div className='nav_user'>
-
-      <div className='nav_option'>
-        <div onClick={toggleDropdown}>
-          <span>
-            Hello {!auth.username ? 'Guest ' : auth.email}
-          </span>
-          <br />
-          Account
+        <div className='nav_search'>
+          <input type='text' />
         </div>
-      {isOpen && (
-        <>
-          <div className="dropdown-content">
-            <Link to='/login' onClick={() => dispatch(logout())}>
-              <button onClick={() => dispatch(logout())}>
-                {auth.username ? 'Sign Out' : 'Sign In'}
-              </button>
-            </Link><br /><br />
-            {!auth.username && (
-              <Link to='/register'>
-                <sub>Click here to register</sub>
-              </Link>   
-            )}
-          </div>
-          {auth.username && (
+      
+        <div className='nav_user'>
+          <div className='nav_option'>
+            <div onClick={toggleDropdown}>
+              <span>
+                Hello {!auth.username ? 'Guest ' : auth.email}
+              </span>
+              <br />
+              Account
+            </div>
+          {isOpen && (
+          <>
+            <div className="dropdown-content">
+              <Link to='/login' onClick={() => dispatch(logout())}>
+                <button onClick={() => dispatch(logout())}>
+                  {auth.username ? 'Sign Out' : 'Sign In'}
+                </button>
+              </Link><br /><br />
+              {!auth.username && (
+                <Link to='/register'>
+                  <sub>Click here to register</sub>
+                </Link>   
+              )}
+            </div>
+            {auth.username && (
             <div>
               <Link to='/editAccount'>Edit Account</Link>
             </div>
+            )}
+          </>       
           )}
-        </>
-        
-              
-      )}
-    </div><br />
-
-        <div className='nav_option'>
-          <span>Orders</span>
-        </div>
+        </div>      
 
         <div className='nav_basket'>
           <Link to='/cart'>
-            <span>
+            <span>cart
               {/* ToDo: add basket image */}
               {/* ToDo: add cart count to basket */}
             </span>
           </Link>
         </div>
-
+        
       </div>      
       </nav>
     </div>
