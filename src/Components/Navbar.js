@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { use } from 'chai';
 import Login from './Login';
 import App from './App';
-import { fetchCart, fetchProducts } from '../store'
+import { fetchCart, fetchProducts, logout } from '../store'
 
 const Navbar = () => {
   const dispatch = useDispatch();
@@ -42,7 +42,15 @@ const Navbar = () => {
               Hello {!auth.username ? "Guest " : auth.email}
             </span><br />
             <span>
-              {auth.username ? "Sign Out" : "Sign In"}
+              {auth.username ?
+              <button onClick={() => dispatch(logout())}>
+              Sign Out
+              </button>
+              :
+              <button onClick={() => dispatch(logout())}>
+              Sign In
+              </button> 
+              }
             </span>
           </Link>
                     
