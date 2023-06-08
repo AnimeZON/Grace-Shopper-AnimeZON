@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
 import { loginWithToken } from '../store/auth';
 import { useDispatch, useSelector } from 'react-redux';
@@ -19,6 +19,13 @@ const Navbar = () => {
       dispatch(fetchCart());
     }
   }, [auth]);
+
+  //dropdown menu logic
+  const [isOpen, setIsOpen] = useState(false);
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
 
     <div className='navbar'>
@@ -36,25 +43,38 @@ const Navbar = () => {
       
       <div className='nav_user'>
 
-        <div className='nav_option'>
-          <Link to='/login'>
-            <span>
-              Hello {!auth.username ? "Guest " : auth.email}
-            </span><br />
-            <span>
-              {auth.username ?
-              <button onClick={() => dispatch(logout())}>
-              Sign Out
-              </button>
-              :
-              <button onClick={() => dispatch(logout())}>
-              Sign In
-              </button> 
-              }
-            </span>
-          </Link>
-                    
+      <div className='nav_option'>
+        <div onClick={toggleDropdown}>
+          <span>
+            Hello {!auth.username ? 'Guest ' : auth.email}
+          </span>
+          <br />
+          Account
         </div>
+      {isOpen && (
+        <>
+          <div className="dropdown-content">
+            <Link to='/login' onClick={() => dispatch(logout())}>
+              <button onClick={() => dispatch(logout())}>
+                {auth.username ? 'Sign Out' : 'Sign In'}
+              </button>
+            </Link><br /><br />
+            {!auth.username && (
+              <Link to='/register'>
+                <sub>Click here to register</sub>
+              </Link>   
+            )}
+          </div>
+          {auth.username && (
+            <div>
+              <Link to='/editAccount'>Edit Account</Link>
+            </div>
+          )}
+        </>
+        
+              
+      )}
+    </div><br />
 
         <div className='nav_option'>
           <span>Orders</span>
