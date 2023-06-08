@@ -29,7 +29,8 @@ const User = conn.define('user', {
   },
   isAdmin: {
     type: BOOLEAN,
-    allowNull: false
+    allowNull: false,
+    defaultValue: false
   },
   address: {
     type: STRING,
@@ -46,6 +47,48 @@ const User = conn.define('user', {
     }
   },
   email: {
+    type: STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: true
+    }
+  },
+  country: {
+    type: STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: true
+    }
+  },
+  fullName: {
+    type: STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: true
+    }
+  },
+  phone: {
+    type: STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: true
+    }
+  },
+  city: {
+    type: STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: true
+    }
+  },
+  contState: {
+    type: STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: true
+    }
+  },
+  zip: {
     type: STRING,
     allowNull: false,
     validate: {
