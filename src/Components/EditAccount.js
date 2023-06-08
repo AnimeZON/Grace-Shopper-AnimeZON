@@ -49,7 +49,6 @@ const EditAccount = () => {
                 <input></input>
                 <button>Submit</button>
             </form>
-
         </div>
     )
 }
