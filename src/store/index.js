@@ -4,6 +4,7 @@ import auth from './auth';
 import cart from './cart';
 import products from "./products";
 import user from "./user";
+import singleProduct from "./product";
 
 const store = configureStore({
   middleware: (defaultMiddleware)=> defaultMiddleware().concat(logger),
@@ -11,7 +12,8 @@ const store = configureStore({
     auth: auth,
     cart: cart,
     products,
-    user
+    user,
+    singleProduct
   }
 });
 
@@ -20,3 +22,4 @@ export * from './auth';
 export * from './cart';
 export * from './products';
 export * from './user'
+export * from './product'

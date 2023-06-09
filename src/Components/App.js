@@ -6,6 +6,7 @@ import Checkout from './Checkout';
 import Cart from './Cart';
 import EditAccount from './EditAccount'
 import SingleProduct from './SingleProduct'
+import RegisterAccount from './RegisterAccount.js';
 import { useSelector, useDispatch } from 'react-redux';
 import { loginWithToken, fetchCart, fetchProducts } from '../store';
 import { Link, Routes, Route } from 'react-router-dom';
@@ -33,7 +34,6 @@ const App = () => {
       {
         auth.id ? (
           <div>
-            <Home />
             <Routes>
               <Route path='/editAccount' element={<EditAccount />} />
             </Routes>
@@ -48,6 +48,8 @@ const App = () => {
           <Route path='/login' element={<Login />} />
           <Route path='/cart' element={<Cart />} />
           <Route path='/checkout' element={<Checkout />} />
+          <Route path='/register' element={<RegisterAccount />} />
+
         </Routes>
       </div>
     </div>

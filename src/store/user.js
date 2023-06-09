@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from 'axios';
+import { createDispatchHook } from "react-redux";
 
 export const fetchUsers = createAsyncThunk("fetchUsers", async () => {
   try {
@@ -10,7 +11,16 @@ export const fetchUsers = createAsyncThunk("fetchUsers", async () => {
   }
 })
 
-export const updateUser = createAsyncThunk("updateUsers", async ({data, id}) => {
+export const addUser = createAsyncThunk("createuser", async ({ data }) => {
+  try {
+    const response = await axios.post('/api/users', data)
+    return response.data;
+  } catch (err) {
+    console.log(err)
+  }
+})
+
+export const updateUser = createAsyncThunk("updateUsers", async ({ data, id }) => {
   try {
     console.log(id);
     const response = await axios.put(`/api/users/${id}`, data);
@@ -29,6 +39,9 @@ const usersSlice = createSlice({
       return action.payload;
     })
     builder.addCase(updateUser.fulfilled, (state, action) => {
+      return action.payload;
+    })
+    builder.addCase(addUser.fulfilled, (state, action) => {
       return action.payload;
     })
   }

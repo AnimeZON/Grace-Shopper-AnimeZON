@@ -1,32 +1,46 @@
-import React, {useState} from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-//import { updateProduct } from '../src/store';
-import { useParams , Link} from 'react-router-dom';
-
-const SingleProduct = ()=> {
-  const { product } = useSelector(state => state);
+import React, {useEffect, useState} from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { fetchSingleProduct } from '../store/product';
+import { updateSingleProduct } from '../store/product'
+const SingleProduct = () => {
+  const dispatch = useDispatch();
   const { id } = useParams();
   const { auth } = useSelector(state => state);
 
-  const singleProduct = product.find( singleProduct => singleProduct.id === id);
-  //be defensive!!
-  if(!singleProduct){
-    return null;
-  }
-
+  const productId = id;
+  console.log("productId:", productId)
   let qty = 1;
-
+  let singleProduct = useSelector(state => state.singleProduct)
   const [image, setImage] = useState(singleProduct.image);
   const [name, setName] = useState(singleProduct.name);
   const [description, setDescription] = useState(singleProduct.description);
   const [price, setPrice] = useState(singleProduct.price);
   const [quantity, setQuantity] = useState(qty);
+  console.log("Single Product:", singleProduct)
 
+
+  useEffect(() => {
+    console.log("working")
+    dispatch(fetchSingleProduct(productId))
+  }, []);
+
+ 
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    const data = {
+        name,
+        price,
+        description
+    };
+    dispatch(updateSingleProduct({id, data}));
+}
+  
   return (
-    auth.isadmin ?   
-    <form>
+    auth.isAdmin ? ( 
+    <form onSubmit={handleSubmit}>
       <div>
-        <input value={image} onChange={(e) => setImage(e.target.value)} />
+        {/* <input value={image} onChange={(e) => setImage(e.target.value)} /> */}
       </div>
       <div>
         <button>Save Changes</button>
@@ -38,9 +52,8 @@ const SingleProduct = ()=> {
         <input value={description} onChange={(e) => setDescription(e.target.value)} />
       </div>
         </div>
-
-    </form> 
-    : // NON ADMIN VIEW
+    </form> ) 
+    : ( // NON ADMIN VIEW
       <div>
         <div>
           <img src={singleProduct.image}/>
@@ -77,8 +90,9 @@ const SingleProduct = ()=> {
           <div>
             <button>Add to Cart</button>
           </div>
-        </div>
+        </div> 
       </div>
+    )
   );
 };
 
