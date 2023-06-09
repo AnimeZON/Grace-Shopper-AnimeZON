@@ -6,10 +6,11 @@ import { use } from 'chai';
 import Login from './Login';
 import App from './App';
 import { fetchCart, fetchProducts, logout } from '../store'
+import Cart from './Cart'
 
 const Navbar = () => {
   const dispatch = useDispatch();
-  const {auth} = useSelector(state => state);
+  const {auth, cart} = useSelector(state => state);
   useEffect(()=> {
     dispatch(loginWithToken());
   }, []);
@@ -25,6 +26,10 @@ const Navbar = () => {
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
+
+  const count = cart.lineItems.reduce((acc, item) => {
+    return acc + item.quantity;
+  }, 0)
 
   return (
     <div className='navbar'>      
@@ -50,6 +55,8 @@ const Navbar = () => {
             </div>
           {isOpen && (
           <>
+            {/* Drop down User actions */}
+            {/* Login or signout */}
             <div className="dropdown-content">
               <Link to='/login' onClick={() => dispatch(logout())}>
                 <button onClick={() => dispatch(logout())}>
@@ -62,6 +69,7 @@ const Navbar = () => {
                 </Link>   
               )}
             </div>
+            {/* if user is auth, show edit account and order history */}
             {auth.username && (
             <div>
               <Link to='/editAccount'>Edit Account</Link><br />
@@ -71,10 +79,10 @@ const Navbar = () => {
           </>       
           )}
         </div>      
-
+        {/* Link to cart and display count  */}
         <div className='nav_basket'>
           <Link to='/cart'>
-            <span>cart
+            <span>cart ({ count })
               {/* ToDo: add basket image */}
               {/* ToDo: add cart count to basket */}
             </span>
