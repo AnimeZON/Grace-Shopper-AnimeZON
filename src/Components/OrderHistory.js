@@ -20,8 +20,8 @@ const OrderHistory = () => {
           <p> Total: {order.total}</p>
           <ul>
             {order.lineItems.map((merch) => (
-              <li key={merch.id}>
-                <Link to={`${merch.id}`}>{merch.product.name}</Link>
+              <li key={merch.product.id}>
+                <Link to={`${merch.product.id}`}>{merch.product.description}</Link>
               </li>
             ))}
           </ul>
