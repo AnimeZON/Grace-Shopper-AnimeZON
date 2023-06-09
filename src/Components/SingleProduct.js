@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { fetchSingleProduct } from '../store/product';
-import { updateSingleProduct } from '../store/product'
+import { fetchSingleProduct, updateSingleProduct } from '../store/product';
+
 const SingleProduct = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
