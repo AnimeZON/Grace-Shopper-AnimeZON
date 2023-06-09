@@ -2,16 +2,24 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchProducts } from '../store/products'
-import { addItem } from '../store/cart';
+import { addItem, removeItem } from '../store/cart';
 
 const ProductList = () => {
-  const { products } = useSelector(state => state);
+  const { products, cart } = useSelector(state => state);
   const [quantity, setQuantity] = useState(1)
   const dispatch = useDispatch();
 
   const addToCart = async (product) => {
     try {
       dispatch(addItem({ product, quantity}))
+    } catch (err) {
+      console.log(err)
+    }
+  };
+
+  const removeFromCart = async ({product, quantityToRemove}) => {
+    try {
+dispatch(removeItem({product, quantityToRemove}))
     } catch (err) {
       console.log(err)
     }
@@ -37,7 +45,10 @@ const ProductList = () => {
               <Link to={`/product/${product.id}`}> {product.name} </Link>
               <p> {product.price} </p>
               <button onClick={() => addToCart(product)}>Add to Cart</button>
-            </div>
+              {
+              cart.lineItems.find(lineItem => lineItem.productId === product.id ) && <button onClick={() => removeFromCart({product, quantityToRemove: 1})}>Remove from Cart</button>
+              }
+              </div>
           )
         })}
       </div>

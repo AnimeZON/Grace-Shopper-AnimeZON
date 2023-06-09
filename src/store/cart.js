@@ -19,15 +19,15 @@ export const fetchCart = createAsyncThunk("fetchCart", async()=>{
   }
 })
 
-export const removeItem = createAsyncThunk("removeItem", async(removeItems)=>{
+export const removeItem = createAsyncThunk("removeItem", async(payload)=>{
   try{
     const token = window.localStorage.getItem('token');
-    const {data} = await axios.put('/api/orders/cart', removeItems, {
+    const response = await axios.put('/api/orders/cart', payload, {
       headers: {
         authorization: token
       }
     });
-    return data;
+    return response.data;
   }catch(er){
     console.log(er);
   }
