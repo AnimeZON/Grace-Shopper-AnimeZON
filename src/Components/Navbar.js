@@ -64,7 +64,8 @@ const Navbar = () => {
             </div>
             {auth.username && (
             <div>
-              <Link to='/editAccount'>Edit Account</Link>
+              <Link to='/editAccount'>Edit Account</Link><br />
+              <Link to='/orderHistory'>Order History</Link>
             </div>
             )}
           </>       
