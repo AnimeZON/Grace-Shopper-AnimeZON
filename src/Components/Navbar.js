@@ -7,6 +7,7 @@ import Login from './Login';
 import App from './App';
 import { fetchCart, fetchProducts, logout } from '../store'
 import Cart from './Cart'
+import Search from './Search';
 
 const Navbar = () => {
   const dispatch = useDispatch();
@@ -41,7 +42,7 @@ const Navbar = () => {
         </Link>
 
         <div className='nav_search'>
-          <input type='text' />
+          <Search />
         </div>
       
         <div className='nav_user'>

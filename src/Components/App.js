@@ -44,7 +44,7 @@ const App = () => {
 
       <div>
         <Routes>
-        <Route path='/' element={<Search />} />
+        <Route path='/search/:term' element={<ProductList />} />
         </Routes>
 
         <Routes>
