@@ -5,7 +5,7 @@ const Search = () => {
   const navigate = useNavigate();
 
   const search = (ev) => {
-    console.log(ev.target.value)
+    navigate(`/search/${ev.target.value}`)
   };
 
 
