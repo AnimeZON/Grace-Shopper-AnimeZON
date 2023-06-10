@@ -1,17 +1,22 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 
 const Search = () => {
   const navigate = useNavigate();
+  const { term } = useParams();
 
   const search = (ev) => {
-    navigate(`/search/${ev.target.value}`)
+    if(ev.target.value.trim()) {
+      navigate(`/search/${ev.target.value}`)
+    } else {
+      navigate('/');
+    }
   };
 
 
   return (
     <div>
-      <input placeholder='Search Animezon' onChange={ search }/>
+      <input value={ term } placeholder='Search Animezon' onChange={ search }/>
     </div>
   )
 }
