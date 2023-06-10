@@ -1,46 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../store";
 import { Link } from "react-router-dom";
+import { fetchCart } from "../store";
 
 const Checkout = () => {
-  const { auth, user } = useSelector((state) => state);
+  const { auth, user, cart } = useSelector((state) => state);
   const dispatch = useDispatch();
-  // const [firstName, setFirstName] = useState(auth.firstName);
-  // const [lastName, setLastName] = useState(auth.lastName);
-  // const [address, setAddress] = useState(auth.address);
-  // const [payment, setPayment] = useState(auth.payment);
-  // const [email, setEmail] = useState(auth.email);
-  // const [country, setCountry] = useState(auth.country);
-  // const [fullName, setFullName] = useState(auth.fullName);
-  // const [phone, setPhone] = useState(auth.phone);
-  // const [city, setCity] = useState(auth.city);
-  // const [contState, setContState] = useState(auth.contState);
-  // const [zip, setZip] = useState(auth.zip);
 
-  // const handleSubmit = (evt) => {
-  //     evt.preventDefault();
-  //     const data = {
-  //       firstName,
-  //       lastName,
-  //         username,
-  //         address,
-  //         payment,
-  //         email,
-  //         country,
-  //         fullName,
-  //         phone,
-  //         city,
-  //         contState,
-  //         zip
-  //     };
-  //     const id = auth.id
-  //     dispatch(updateUser({data, id}));
-  // }
+  useEffect(() => {
+    dispatch(fetchCart());
+  }, []);
 
+  const total = [];
 
-  return (
-    !user ? (
+  return !user ? (
     <div>
       <p>Payment</p>
       <form>
@@ -70,12 +44,35 @@ const Checkout = () => {
         <Link className="returnToCart">Return to cart</Link>
         <button>Continue to shipping</button>
       </form>
+    </div>
+  ) : (
+    <div className="checkoutCart">
+      <h1>Checkout</h1>
+      <div>
+        {cart.lineItems.map((lineItem) => {
+          return (
+            <div>
+              <img
+                src={lineItem.product.image}
+                alt={lineItem.product.name}
+                style={{ width: "20%", height: "auto" }}
+              />
+
+              {`(${lineItem.quantity})`}
+              <Link to={`/product/${lineItem.product.id}`}>
+                {" "}
+                {lineItem.product.name}{" "}
+              </Link>
+              {lineItem.product.price}
+              {total.push(lineItem.quantity * lineItem.product.price)}
+            </div>
+          );
+        })}
       </div>
-      ) :
-      <div className="checkoutCart">
-        <p>import cart here</p>
+      <hr />
+      <p> Total USD </p>
+      ${total.reduce((acc, curr) => acc + curr, 0)}
     </div>
   );
 };
-
 export default Checkout;
