@@ -6,6 +6,7 @@ import Checkout from './Checkout';
 import Cart from './Cart';
 import EditAccount from './EditAccount'
 import SingleProduct from './SingleProduct'
+import Search from './Search';
 import RegisterAccount from './RegisterAccount.js';
 import { useSelector, useDispatch } from 'react-redux';
 import { loginWithToken, fetchCart, fetchProducts } from '../store';
@@ -43,12 +44,18 @@ const App = () => {
 
       <div>
         <Routes>
+          <Route path='/' element={ <Search /> } />
+          <Route path='/search/:term' element={ <Search /> } />
+        </Routes>
+
+        <Routes>
           <Route path='/' element={<ProductList />} />
           <Route path='/product/:id' element={<SingleProduct />} />
           <Route path='/login' element={<Login />} />
           <Route path='/cart' element={<Cart />} />
           <Route path='/checkout' element={<Checkout />} />
           <Route path='/register' element={<RegisterAccount />} />
+          <Route path='/search/:term' element={<ProductList /> } />
 
         </Routes>
       </div>

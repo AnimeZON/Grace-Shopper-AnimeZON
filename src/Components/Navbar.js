@@ -6,6 +6,8 @@ import { use } from 'chai';
 import Login from './Login';
 import App from './App';
 import { fetchCart, fetchProducts, logout } from '../store'
+import Search from './Search';
+
 
 const Navbar = () => {
   const dispatch = useDispatch();
@@ -34,10 +36,10 @@ const Navbar = () => {
             AnimeZon
           </div>          
         </Link>
-
-        <div className='nav_search'>
+        <Search />
+        {/* <div className='nav_search'>
           <input type='text' />
-        </div>
+        </div> */}
       
         <div className='nav_user'>
           <div className='nav_option'>
