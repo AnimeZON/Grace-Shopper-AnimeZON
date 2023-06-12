@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { fetchSingleProduct, updateSingleProduct } from '../store/product';
+import { addItem, removeItem } from '../store/cart';
 
 const SingleProduct = () => {
   const dispatch = useDispatch();
@@ -36,6 +37,14 @@ const SingleProduct = () => {
     dispatch(updateSingleProduct({id, data}));
 }
   
+const addToCart = async (product) => {
+  try {
+    dispatch(addItem({ product, quantity}))
+  } catch (err) {
+    console.log(err)
+  }
+};
+
   return (
     auth.isAdmin ? ( 
     <form onSubmit={handleSubmit}>
@@ -88,7 +97,7 @@ const SingleProduct = () => {
             </select>
           </div>
           <div>
-            <button>Add to Cart</button>
+          <button onClick={() => addToCart(singleProduct)}>Add to Cart</button>
           </div>
         </div> 
       </div>
