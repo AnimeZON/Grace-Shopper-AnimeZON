@@ -24,7 +24,6 @@ app.get('/', async(req, res, next)=> {
   }
 });
 
-
 app.get('/cart', async(req, res, next)=> {
   try {
     const user = await User.findByToken(req.headers.authorization);
