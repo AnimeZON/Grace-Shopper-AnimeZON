@@ -3,11 +3,13 @@ const User = require('./User');
 const Product = require('./Product');
 const Order = require('./Order');
 const LineItem = require('./LineItem');
+const Reviews = require('./Reviews');
 
 Order.belongsTo(User);
 LineItem.belongsTo(Order);
 Order.hasMany(LineItem);
 LineItem.belongsTo(Product);
+Product.hasMany(Reviews);
 
 const userData1 = {
   username: 'moe',
