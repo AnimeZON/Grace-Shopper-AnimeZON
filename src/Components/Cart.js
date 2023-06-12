@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { fetchCart, addItem, removeItem } from '../store/cart';
-import { logout } from '../store';
+import { createOrder, fetchOrder, updateOrder } from '../store';
 import { Link } from 'react-router-dom';
 
 const Cart = ()=> {
@@ -12,6 +12,7 @@ const Cart = ()=> {
 
   useEffect(() => {
     dispatch(fetchCart())
+    dispatch(createOrder())
   }, []);
 
 let total = 0;
@@ -26,7 +27,7 @@ dispatch(removeItem({product, quantityToRemove}))
   };
 
   const editQuantity = async (e,product, qty, quantity) => {
-    let qty = 0;
+    let amount = 0;
     (e) => setQuantity(e.target.value)
     try {
       dispatch(addItem({ product, quantity}))
@@ -55,7 +56,7 @@ dispatch(removeItem({product, quantityToRemove}))
               <Link to={`/product/${lineItem.product.id}`}> {lineItem.product.name} </Link>
                {lineItem.product.price} 
              <div>
-             <select value={quantity} onChange={}> Qty:
+             <select value={quantity} > Qty:
                <option value="1">1</option>
                <option value="2">2</option>
                <option value="3">3</option>
