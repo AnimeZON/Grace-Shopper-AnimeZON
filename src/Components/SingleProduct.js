@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { fetchSingleProduct, updateSingleProduct } from '../store/product';
+// import { fetchSingleProduct, updateSingleProduct } from '../store/product';
 import { addItem, removeItem } from '../store/cart';
 
 const SingleProduct = () => {
