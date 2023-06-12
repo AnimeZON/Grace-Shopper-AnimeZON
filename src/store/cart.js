@@ -34,7 +34,6 @@ export const removeItem = createAsyncThunk("removeItem", async(payload)=>{
 })
 
 export const addItem = createAsyncThunk("addItem", async({product, quantity})=>{
-  console.log(addItem)
   try{
     const token = window.localStorage.getItem('token');
     const {data} = await axios.post('/api/orders/cart', {product, quantity}, {
