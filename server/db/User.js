@@ -148,6 +148,7 @@ User.prototype.getCart = async function () {
       ]
     }
   );
+  console.log(cart, 'prototypeGetCart')
   return cart;
 }
 

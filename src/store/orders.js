@@ -30,6 +30,20 @@ export const createOrder = createAsyncThunk("createOrder", async()=>{
   }
 })
 
+export const updateOrder = createAsyncThunk("updateOrder", async(payload)=>{
+  try{
+    const token = window.localStorage.getItem('token');
+    const response = await axios.put(`/api/orders/${id}`, payload, {
+      headers: {
+        authorization: token
+      }
+    });
+    return response.data;
+  }catch(er){
+    console.log(er);
+  }
+})
+
 const ordersSlice = createSlice({
   name: "orders",
   initialState: [],
@@ -40,6 +54,9 @@ const ordersSlice = createSlice({
     });
     builder.addCase(createOrder.fulfilled, (state, action)=>{
       return [...state, action.payload];
+    })
+    builder.addCase(updateOrder.fulfilled, (state, action)=>{
+      return state.map(order => order.id === action.payload.id ? action.payload: order);
     })
   }
 })

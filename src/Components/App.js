@@ -12,6 +12,8 @@ import { loginWithToken, fetchCart, fetchProducts } from '../store';
 import { Link, Routes, Route } from 'react-router-dom';
 import Navbar from './Navbar';
 import Search from './Search';
+import Orders from './Orders'
+import CheckoutButton from './CheckoutButton';
 
 const App = () => {
   const { auth, products } = useSelector(state => state);
@@ -54,6 +56,9 @@ const App = () => {
           <Route path='/cart' element={<Cart />} />
           <Route path='/checkout' element={<Checkout />} />
           <Route path='/register' element={<RegisterAccount />} />
+          <Route path='/orders' element={<Orders />} />
+          <Route path='/checkoutbutton' element={<CheckoutButton />} />
+
 
         </Routes>
       </div>
