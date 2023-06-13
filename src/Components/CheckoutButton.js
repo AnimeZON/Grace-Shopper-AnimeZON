@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { createOrder, fetchCart } from '../store';
+import { createOrder, fetchCart, updateOrder } from '../store';
 import { Link } from 'react-router-dom';
 
 const CheckoutButton = ()=> {
@@ -12,6 +12,7 @@ const CheckoutButton = ()=> {
       <button 
         onClick={
           async()=> {
+            await dispatch(updateOrder());
             await dispatch(createOrder());
             await dispatch(fetchCart());
           }
