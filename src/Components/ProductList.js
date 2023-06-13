@@ -3,57 +3,31 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import { fetchProducts } from '../store/products'
 import { addItem, removeItem } from '../store/cart';
+import Product from './Product';
 
 const ProductList = () => {
   const { products, cart } = useSelector(state => state);
-  const [quantity, setQuantity] = useState(1)
-  const { term }  = useParams();
+  const { term } = useParams();
   const dispatch = useDispatch();
-
-  const addToCart = async (product) => {
-    try {
-      dispatch(addItem({ product, quantity}))
-    } catch (err) {
-      console.log(err)
-    }
-  };
-
-  const removeFromCart = async ({product, quantityToRemove}) => {
-    try {
-dispatch(removeItem({product, quantityToRemove}))
-    } catch (err) {
-      console.log(err)
-    }
-  };
 
   useEffect(() => {
     console.log("working")
     dispatch(fetchProducts())
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="products">
       <h1>Products</h1>
       <div>
         {products
-        .filter(product => !term || product.name.includes(term))
-        .map((product) => {
-          return (
-            <div>
-              <img
-                src={product.image}
-                alt={product.name}
-                style={{ width: "50%", height: "auto" }}
-              />
-              <Link to={`/product/${product.id}`}> {product.name} </Link>
-              <p> {product.price} </p>
-              <button onClick={() => addToCart(product)}>Add to Cart</button>
-              {
-              cart.lineItems.find(lineItem => lineItem.productId === product.id ) && <button onClick={() => removeFromCart({product, quantityToRemove: 1})}>Remove from Cart</button>
-              }
+          .filter(product => !term || product.name.includes(term))
+          .map((product) => {
+            return (
+              <div>
+                <Product key={product.id} obj={product} />
               </div>
-          )
-        })}
+            )
+          })}
       </div>
     </div>
   );
