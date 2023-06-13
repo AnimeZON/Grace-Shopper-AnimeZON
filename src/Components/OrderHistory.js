@@ -11,20 +11,27 @@ const OrderHistory = () => {
     dispatch(loginWithToken()); 
  }, [dispatch]);
 
+ const order = orders.find((order) => order.id === orderId);
+ const count = order.lineItems.reduce((acc, item) => {
+  return acc + item.quantity;
+}, 0)
+
   return (
     <div>
       <h1>Order History</h1>
       {orders.map((order) => (
         <div key={order.id}>
-          <p>Order ID: {order.id}</p>
-          <p> Total: {order.total}</p>
-          <ul>
-            {order.lineItems.map((merch) => (
-              <li key={merch.product.id}>
-                <Link to={`${merch.product.id}`}>{merch.product.description}</Link>
+          <p>ORDER PLACED {order.createdAt.slice(0,10)}</p>
+          <p>TOTAL ${order.total}</p>
+          <p>ORDER #{order.id}</p>
+          <div>
+            {order.lineItems.map((itm) => (
+              <li key={itm.product.id}>
+                <img src={itm.product.image} alt={itm.product.description} />
+                <Link to={`${itm.product.id}`}>{itm.product.description}</Link>
               </li>
             ))}
-          </ul>
+          </div>
         </div>
       ))}
     </div>
