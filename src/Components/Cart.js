@@ -12,7 +12,7 @@ const Cart = ()=> {
 
   useEffect(() => {
     dispatch(fetchCart())
-    dispatch(createOrder())
+    // dispatch(createOrder())
   }, []);
 
 let total = 0;
@@ -39,6 +39,7 @@ dispatch(removeItem({product, quantityToRemove}))
 
   return (
     <div>
+      <Link to={'/checkoutbutton'}>Check out</Link>
       <h1>Cart</h1>
       <h2>Price</h2>
       <div>

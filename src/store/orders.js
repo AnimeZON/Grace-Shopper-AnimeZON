@@ -33,7 +33,7 @@ export const createOrder = createAsyncThunk("createOrder", async()=>{
 export const updateOrder = createAsyncThunk("updateOrder", async(payload)=>{
   try{
     const token = window.localStorage.getItem('token');
-    const response = await axios.put('/api/orders', payload, {
+    const response = await axios.put(`/api/orders/${id}`, payload, {
       headers: {
         authorization: token
       }
