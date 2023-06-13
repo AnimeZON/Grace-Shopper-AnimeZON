@@ -14,6 +14,7 @@ import Navbar from './Navbar';
 import Search from './Search';
 import Orders from './Orders'
 import CheckoutButton from './CheckoutButton';
+import OrderHistory from './OrderHistory';
 
 const App = () => {
   const { auth, products } = useSelector(state => state);
@@ -58,8 +59,7 @@ const App = () => {
           <Route path='/register' element={<RegisterAccount />} />
           <Route path='/orders' element={<Orders />} />
           <Route path='/checkoutbutton' element={<CheckoutButton />} />
-
-
+          <Route path='/orderHistory' element={<OrderHistory />} />
         </Routes>
       </div>
     </div>
