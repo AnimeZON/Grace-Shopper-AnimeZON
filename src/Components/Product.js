@@ -9,8 +9,7 @@ function Product(props) {
 
     const addToCart = async () => {
         try{
-            const product = props.obj
-            dispatch(addItem({ product, quantity}));
+            dispatch(addItem({ product: props.obj, quantity}));
         }catch(err){
             console.log(err)
         }
