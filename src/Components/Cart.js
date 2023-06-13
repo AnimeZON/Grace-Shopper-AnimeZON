@@ -4,10 +4,11 @@ import { useParams } from 'react-router-dom';
 import { fetchCart, addItem, removeItem } from '../store/cart';
 import { createOrder, fetchOrder, updateOrder } from '../store';
 import { Link } from 'react-router-dom';
+import LineItem from '/LineItem'
 
 const Cart = ()=> {
-  const dispatch = useDispatch();
   const { cart } = useSelector(state => state);
+  const dispatch = useDispatch();
   
 
   useEffect(() => {
@@ -26,28 +27,17 @@ dispatch(removeItem({product, quantityToRemove}))
     }
   };
 
-  const editQuantity = async (e,product, qty, quantity) => {
-    let amount = 0;
-    (e) => setQuantity(e.target.value)
-    try {
-      dispatch(addItem({ product, quantity}))
-    } catch (err) {
-      console.log(err)
-    }
-  };
-  
-
   return (
     <div>
       <h1>Cart</h1>
       <h2>Price</h2>
       <div>
         {cart.lineItems.map((lineItem) => {
-          const [quantity, setQuantity] = useState(lineItem.quantity);
           {total += lineItem.quantity}
           {totalPrice += lineItem.quantity * lineItem.product.price}
           return (
             <div>
+              <LineItem></LineItem>
               <img
                 src={lineItem.product.image}
                 alt={lineItem.product.name}
