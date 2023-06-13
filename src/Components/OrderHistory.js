@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { useDispatch, useSele, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import  {fetchOrders, loginWithToken} from '../store'
 
 const OrderHistory = () => {
@@ -17,8 +17,10 @@ const OrderHistory = () => {
 }, 0)
 
   return (
-    <div>
-      <h1>Order History</h1>
+    <div className='history__container'>
+      <div className='history__title'>
+        <h1>Order History</h1>
+      </div>
       {orders.map((order) => (
         <div key={order.id}>
           <p>ORDER PLACED {order.createdAt.slice(0,10)}</p>
