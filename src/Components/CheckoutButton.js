@@ -22,7 +22,7 @@ const CheckoutButton = ()=> {
             navigate('/orders');
           }
         }
-      >Create Order</button>
+      >Proceed to checkout</button>
       <pre>
         {
           JSON.stringify(cart, null, 2)
