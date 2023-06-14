@@ -22,9 +22,9 @@ let totalPrice =0;
 function getItemCountl(){
   {total += lineItem.quantity}
 }
-function getTotalPrice(){
-  cart.lineItems.forEach({totalPrice += lineItem.quantity * lineItem.product.price})
-}
+// function getTotalPrice(){
+//   cart.lineItems.forEach({totalPrice += lineItem.quantity * lineItem.product.price})
+// }
 
   return (
     <div>
