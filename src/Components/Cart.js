@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import { fetchCart, addItem, removeItem } from '../store/cart';
 import { createOrder, fetchOrder, updateOrder } from '../store';
 import { Link } from 'react-router-dom';
+import LineItem from './LineItem';
 
 const Cart = ()=> {
   const dispatch = useDispatch();
@@ -17,24 +18,6 @@ const Cart = ()=> {
 
 let total = 0;
 let totalPrice =0;
-
-  const removeFromCart = async ({product, quantityToRemove}) => {
-    try {
-dispatch(removeItem({product, quantityToRemove}))
-    } catch (err) {
-      console.log(err)
-    }
-  };
-
-  const editQuantity = async (e,product, qty, quantity) => {
-    let amount = 0;
-    (e) => setQuantity(e.target.value)
-    try {
-      dispatch(addItem({ product, quantity}))
-    } catch (err) {
-      console.log(err)
-    }
-  };
   
 
   return (
@@ -48,31 +31,7 @@ dispatch(removeItem({product, quantityToRemove}))
           {total += lineItem.quantity}
           {totalPrice += lineItem.quantity * lineItem.product.price}
           return (
-            <div>
-              <img
-                src={lineItem.product.image}
-                alt={lineItem.product.name}
-                style={{ width: "20%", height: "auto" }}
-              />
-              <Link to={`/product/${lineItem.product.id}`}> {lineItem.product.name} </Link>
-               {lineItem.product.price} 
-             <div>
-             <select value={quantity} > Qty:
-               <option value="1">1</option>
-               <option value="2">2</option>
-               <option value="3">3</option>
-               <option value="4">4</option>
-               <option value="5">5</option>
-               <option value="6">6</option>
-               <option value="7">7</option>
-               <option value="8">8</option>
-               <option value="9">9</option>
-               <option value="10">10</option>
-             </select>
-             |
-             <button onClick={() => removeFromCart(lineItem.product, lineItem.quantity)}>Delete</button>
-           </div>
-           </div>
+            <LineItem key={lineItem.id} obj={lineItem} />
           )
           })}
         </div> 
