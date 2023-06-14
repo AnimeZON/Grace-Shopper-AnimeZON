@@ -19,6 +19,12 @@ const Cart = ()=> {
 let total = 0;
 let totalPrice =0;
   
+function getItemCountl(){
+  {total += lineItem.quantity}
+}
+function getTotalPrice(){
+  cart.lineItems.forEach({totalPrice += lineItem.quantity * lineItem.product.price})
+}
 
   return (
     <div>
@@ -27,8 +33,6 @@ let totalPrice =0;
       <h2>Price</h2>
       <div>
         {cart.lineItems.map((lineItem) => {
-          {total += lineItem.quantity}
-          {totalPrice += lineItem.quantity * lineItem.product.price}
           return (
             <LineItem key={lineItem.id} obj={lineItem} />
           )
