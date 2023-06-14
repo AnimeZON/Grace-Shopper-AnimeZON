@@ -27,7 +27,6 @@ let totalPrice =0;
       <h2>Price</h2>
       <div>
         {cart.lineItems.map((lineItem) => {
-          const [quantity, setQuantity] = useState(lineItem.quantity);
           {total += lineItem.quantity}
           {totalPrice += lineItem.quantity * lineItem.product.price}
           return (
