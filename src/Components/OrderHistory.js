@@ -36,8 +36,8 @@ const OrderHistory = () => {
                   <Link to={`${itm.product.id}`}>{itm.product.description}</Link>
                 </li>
               ))}
-            </div>
-            
+            </div><br />
+
           </div>
         ))}
       </div>
