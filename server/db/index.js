@@ -92,9 +92,9 @@ const syncAndSeed = async () => {
     User.create( userData1 ),
     User.create( userData2 ),
     User.create( userData3 ),
-    Product.create({ name: 'Luffy', image: 'Picture.img', price: 234.45, description: 'A statue of Luffy', quantity: 10 }),
-    Product.create({ name: 'Zoro', image: 'Picture.img', price: 234.45, description: 'A statue of Zoro' }),
-    Product.create({ name: 'Nami', image: 'Picture.img', price: 234.45, description: 'A statue of Nami' }),
+    Product.create({ name: 'Luffy', image: 'https://tinyurl.com/bw9npkp7', price: 234.45, description: 'A statue of Luffy', quantity: 10 }),
+    Product.create({ name: 'Zoro', image: 'https://tinyurl.com/juzxdy6y', price: 234.45, description: 'A statue of Zoro' }),
+    Product.create({ name: 'Nami', image: 'https://tinyurl.com/mrxtwcfe', price: 234.45, description: 'A statue of Nami' }),
     User.create(userData4),
     User.create(userData5),
   ]);
