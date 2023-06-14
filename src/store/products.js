@@ -48,7 +48,7 @@ const productsSlice = createSlice({
       return action.payload;
     })
     builder.addCase(updateSingleProduct.fulfilled, (state, action) => {
-      return state.map(product => product.id == action.payload ? action.payload: product)
+      return state.map(product => product.id == action.payload.id ? action.payload: product)
     });
     builder.addCase(createProductReview.fulfilled, (state, action) => {
       return action.payload;

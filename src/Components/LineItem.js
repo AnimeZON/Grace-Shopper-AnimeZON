@@ -6,36 +6,52 @@ import { createOrder, fetchOrder, updateOrder } from '../store';
 import { Link } from 'react-router-dom';
 
 const LineItem = (props)=> {
+    const {obj} = props;
+    console.log("this is what props is" + obj)
   const dispatch = useDispatch();
-  const [qty, setQty] = useState(1);
+  const [qty, setQty] = useState(props.obj.quantity);
   
 
-  const removeFromCart = async ({product, quantityToRemove}) => {
+  const removeFromCart = async () => {
+    const product = props.obj.product;
     try {
-dispatch(removeItem({product, quantityToRemove}))
+        dispatch(removeItem({product, quantityRemove: props.obj.quantity}))
     } catch (err) {
       console.log(err)
     }
   };
 
-  const editQuantity = async ( product, quantity) => {
+//   const editQuantity = async ( product, quantity) => {
 
-    //setQty(e.target.value*1)
-    let difference = Math.abs(quantity - qty)
-    if(quantity > qty) {
-    try {
-        dispatch(removeItem({product, difference}))
-            } catch (err) {
-              console.log(err)
-            }
-          }
-    else {      
-    try {
-      dispatch(addItem({ product, difference}))
-    } catch (err) {
-      console.log(err)
+//     //setQty(e.target.value*1)
+//     let difference = Math.abs(quantity - qty)
+//     if(quantity > qty) {
+//     try {
+//         dispatch(removeItem({product, difference}))
+//             } catch (err) {
+//               console.log(err)
+//             }
+//           }
+//     else {      
+//     try {
+//       dispatch(addItem({ product, difference}))
+//     } catch (err) {
+//       console.log(err)
+//     }
+//   }
+// }
+
+const editQuantity = () => {
+    const product = props.obj.product
+    let diff
+    console.log(props.obj.quantity, qty)
+    if (props.obj.quantity > qty) {
+        diff = props.obj.quantity - qty;
+        dispatch(removeItem({product, quantityToRemove: diff}));
+    } else {
+        diff = qty - props.obj.quantity
+        dispatch(addItem({product, quantity: diff}));
     }
-  }
 }
 
 
@@ -50,7 +66,10 @@ dispatch(removeItem({product, quantityToRemove}))
               <Link to={`/product/${props.obj.product.id}`}> {props.obj.product.name} </Link>
                {props.obj.product.price} 
              <div>
-             <select value={qty} onChange={editQuantity( props.obj.product, props.obj.quanitity)}> Qty:
+             <select value={qty} onChange={(e) => {
+                    setQty(e.target.value)
+                    editQuantity();
+                }}>
                <option value="1">1</option>
                <option value="2">2</option>
                <option value="3">3</option>
