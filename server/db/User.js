@@ -181,6 +181,24 @@ User.prototype.removeFromCart = async function ({ product, quantityToRemove }) {
   return this.getCart();
 };
 
+User.prototype.updateCartItem = async function ({ product, quantityNew }) {
+  const cart = await this.getCart();
+  const lineItem = cart.lineItems.find(lineItem => {
+    return lineItem.productId === product.id;
+  });
+  console.log('NEW QUANTITY !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!', quantityNew)
+  lineItem.quantity = quantityNew;
+  if (lineItem.quantity > 0) {
+    console.log('inside if', lineItem)
+    await lineItem.save();
+  }
+  else {
+    await lineItem.destroy();
+  }
+  console.log('Second',lineItem)
+  return this.getCart();
+};
+
 
 User.addHook('beforeSave', async (user) => {
   if (user.changed('password')) {

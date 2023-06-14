@@ -5,25 +5,31 @@ import { fetchCart, addItem, removeItem } from '../store/cart';
 import { createOrder, fetchOrder, updateOrder } from '../store';
 import { Link } from 'react-router-dom';
 import LineItem from './LineItem';
+import { use } from 'chai';
 
 const Cart = ()=> {
   const dispatch = useDispatch();
   const { cart } = useSelector(state => state);
-  
+  const [totalPrice, setTotalPrice] = useState(0);
+  const [total, setTotal] = useState(0); 
 
   useEffect(() => {
     dispatch(fetchCart())
+    getTotalPrice();
     // dispatch(createOrder())
-  }, []);
+  }, [dispatch]);
 
-let total = 0;
-let totalPrice =0;
-  
-function getItemCountl(){
-  {total += lineItem.quantity}
-}
+
+  // {totalPrice += lineItem.quantity * lineItem.product.price}
 function getTotalPrice(){
-  cart.lineItems.forEach({totalPrice += lineItem.quantity * lineItem.product.price})
+  let tempPrice = 0;
+  let tempCount = 0;
+  cart.lineItems.forEach((itm) => {
+    tempPrice += itm.quantity * itm.product.price;
+    tempCount += itm.quantity;
+  })
+  setTotalPrice(tempPrice);
+  setTotal(tempCount);
 }
 
   return (
