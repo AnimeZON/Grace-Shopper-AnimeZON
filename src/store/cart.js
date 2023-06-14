@@ -47,6 +47,20 @@ export const addItem = createAsyncThunk("addItem", async(payload)=>{
   }
 })
 
+export const updateItem = createAsyncThunk("updateItem", async(payload)=>{
+  try{
+    console.log(payload)
+    const token = window.localStorage.getItem('token');
+    const response = await axios.put('/api/orders/item', payload, {
+      headers:{
+        authorization: token
+      }
+    });
+    return response.data;
+  }catch(er){
+    console.log(er);
+  }
+})
 
 const cartSlice = createSlice({
   name:"cart",
@@ -60,6 +74,9 @@ const cartSlice = createSlice({
       return action.payload;
     }),
     builder.addCase(addItem.fulfilled, (state, action ) => {
+      return action.payload;
+    }),
+    builder.addCase(updateItem.fulfilled, (state, action) => {
       return action.payload;
     })
   }

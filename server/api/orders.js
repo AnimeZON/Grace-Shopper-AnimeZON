@@ -54,4 +54,15 @@ app.put('/cart', async(req, res, next)=> {
   }
 });
 
+app.put('/item', async(req, res, next)=> {
+  try {
+    console.log(req.body)
+    const user = await User.findByToken(req.headers.authorization);
+    res.send(await user.updateCartItem(req.body));
+  }
+  catch(ex){
+    next(ex);
+  }
+});
+
 
