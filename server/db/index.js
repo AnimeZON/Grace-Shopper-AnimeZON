@@ -71,6 +71,21 @@ const userData4 = {
   zip: "11224"
 }
 
+const userData5 = {
+  username: 'cust1',
+  password: '123',
+  isAdmin: false,
+  address: '1234 Baybay Street',
+  payment: 'Credit',
+  email: 'cust1@gmail.com',
+  country: 'United States',
+  fullName: 'Bilbo Baggins',
+  phone: '777-888-9999',
+  city: 'South City',
+  contState: 'Florida',
+  zip: "11224"
+}
+
 const syncAndSeed = async () => {
   await conn.sync({ force: true });
   const [moe, lucy, larry, luffy, zoro, nami, ethyl] = await Promise.all([
@@ -81,6 +96,7 @@ const syncAndSeed = async () => {
     Product.create({ name: 'Zoro', image: 'Picture.img', price: 234.45, description: 'A statue of Zoro' }),
     Product.create({ name: 'Nami', image: 'Picture.img', price: 234.45, description: 'A statue of Nami' }),
     User.create(userData4),
+    User.create(userData5),
   ]);
 
   const cart = await ethyl.getCart();
