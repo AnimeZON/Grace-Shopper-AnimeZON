@@ -33,90 +33,72 @@ const Navbar = () => {
   }, 0)
 
   return (
-    <div className='navbar'>      
-      <nav>
+    // <div className='nav'>      
+      <nav className='nav'>
+        {/* logo */}
         <Link to='/'>
-          <div className="home_logo">
+          <div className="nav__logo">
             <h2>AnimeZon</h2>
           </div>          
         </Link>
 
-        <div className='navbar__links'>
-          <div className='nav_search'>
-              <Search />
-            </div>      
-            <div className='nav_user'>
-              <div className='nav_option'>
-                <div onClick={toggleDropdown}>
-                  <span>
-                    Hello {!auth.username ? 'Guest ' : auth.email}
-                  </span>
-                  <br />
-                  Account
-                </div>
-              {isOpen && (
-                <>
-                  {/* Drop down User actions */}
-                  {/* Login or signout */}
-                  <div className="dropdown-content">
-                    <Link to='/login' onClick={() => dispatch(logout())}>
-                      <button onClick={() => dispatch(logout())}>
-                        {auth.username ? 'Sign Out' : 'Sign In'}
-                      </button>
-                    </Link><br /><br />
-                    {!auth.username && (
-                      <Link to='/register'>
-                        <sub>Click here to register</sub>
-                      </Link>   
-                    )}
-                  </div>
-                  {/* if user is auth, show edit account and order history */}
-                  {auth.username && (
-                    <div>
-                      <Link to='/editAccount'>Edit Account</Link><br />
-                      <Link to='/orderHistory'>Order History</Link>
-                    </div>
-                  )}
-                </>
-              )}
-            </div>      
-            {/* Link to cart and display count  */}
-            <div className='nav_basket'>
-              <Link to='/cart'>
-                <span>cart ({ count })
-                  {/* ToDo: add basket image */}
-                  {/* ToDo: add cart count to basket */}
-                </span>
-              </Link>
-            </div>        
-            </div>
-        </div>
+        {/* search */}
+        <div className='nav__search'>
+          <Search />
+        </div>                        
 
-        <div className='hamburger__menu' >
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>          
+        {/* toogle user account action */}
+        <div className='nav__links'>
+          <div onClick={toggleDropdown}>
+            <span>
+              Hello {!auth.username ? 'Guest ' : auth.email}
+            </span>
+            <br />
+            <p>Account</p>
+
+            {isOpen && (
+              <>
+                {/* Drop down User actions */}
+                {/* Login or signout */}
+                <div className="dropdown-content">
+                  <Link to='/login' onClick={() => dispatch(logout())}>
+                    <button onClick={() => dispatch(logout())}>
+                      {auth.username ? 'Sign Out' : 'Sign In'}
+                    </button>
+                  </Link><br /><br />
+                  {!auth.username && (
+                    <Link to='/register'>
+                      <sub>Click here to register</sub>
+                    </Link>   
+                  )}
+                </div>
+                {/* if user is auth, show edit account and order history */}
+                {auth.username && (
+                  <div>
+                    <Link to='/editAccount'>Edit Account</Link><br />
+                    <Link to='/orderHistory'>Order History</Link>
+                  </div>
+                )}
+              </>
+            )}        
+          </div>
+        </div>    
+
+        {/* Link to cart and display count  */}
+        <div className='nav_basket'>
+          <Link to='/cart'>
+            <span>cart ({ count })
+              {/* ToDo: add basket image */}
+              {/* ToDo: add cart count to basket */}
+            </span>
+          </Link>
+        </div>        
+            
+                      
       </nav>
-    </div>
+    // </div>
       
 
-    // <div>
-    //   <nav>
-    //     <Link to='/'>Animezon</Link>
-    //     <input type='text' placeholder="Search Animezon"></input>
-    //     <Link to='/login'>
-    //       <button type='button'>
-    //         <span>
-    //           Hello {!auth.username ? "Guest" : auth.email}
-    //         </span>
-    //         <span>
-    //           {auth.username ? "Sign Out" : "Sign In"}
-    //         </span>
-    //       </button>
-    //     </Link>
-    //   </nav>
-    // </div>
   )
 }
 
