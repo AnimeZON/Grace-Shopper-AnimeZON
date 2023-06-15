@@ -26,9 +26,11 @@ const ProductList = () => {
     
 
   return (
-    <div className='productList'>
+    <div>
       <h1>Products</h1>
+      <div className='productList'>
       {productsList}
+      </div>
     </div>
   );
 };
