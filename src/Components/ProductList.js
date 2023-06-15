@@ -6,7 +6,7 @@ import { addItem, removeItem } from '../store/cart';
 import Product from './Product';
 
 const ProductList = () => {
-  const { products } = useSelector(state => state);
+  const { products, reviews } = useSelector(state => state);
   const { term } = useParams();
   const dispatch = useDispatch();
 
@@ -20,7 +20,7 @@ const ProductList = () => {
     .filter(product => !term || product.name.includes(term))
     .map((product) => {
       return (
-        <Product key={product.id} obj={product} />
+        <Product key={product.id} obj={product} rev={reviews} />
       )
     })
     
