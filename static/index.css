@@ -122,13 +122,15 @@ button {
   text-transform: uppercase;
 }
 .register__container {
-  max-width: 400px;
   width: 100%;
   background: #FFF;
-  padding: 40px;
   border-radius: 20px;
   position: relative;
-  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 40px;
 }
 .register__title {
   text-align: center;
@@ -137,6 +139,12 @@ button {
 .register__form {
   display: flex;
   flex-direction: column;
+  width: 100%;
+}
+@media screen and (min-width: 600px) {
+  .register__form {
+    width: 600px;
+  }
 }
 .register__input {
   padding: 8px;
