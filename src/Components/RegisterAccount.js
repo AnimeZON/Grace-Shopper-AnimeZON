@@ -42,17 +42,42 @@ const RegisterAccount = () => {
     return (
         <div className='register__container'>
             <form onSubmit={handleSubmit}>
-                <h2 className='register__title'>Account Info</h2>
+                <h2 className='register__title'>
+                    Account Info
+                </h2>
                 <label for='username'>Username</label>
-                <input className='register__input' value={username} onChange={(e) => setUsername(e.target.value)} />
+                <input
+                 className='register__input'
+                 value={username}
+                 type='text'
+                 onChange={(e) => setUsername(e.target.value)}
+                />
+
                 <label for='email'>Email</label>
-                <input className='register__input' value={email} onChange={(e) => setEmail(e.target.value)} />
+                <input
+                className='register__input'
+                value={email}
+                type='text'
+                onChange={(e) => setEmail(e.target.value)}
+                />
+
                 <label for='password'>Password</label>
-                <input className='register__input' value={password} onChange={(e) => setPassword(e.target.value)} />
+                <input
+                className='register__input'
+                value={password}
+                type='text'
+                onChange={(e) => setPassword(e.target.value)}
+                />
 
                 <h2 className='register__title'>Payment Info</h2>
                 <label className='register__title'>Payment</label>
-                <input value={payment} onChange={(e) => setPayment(e.target.value)} />
+                <input
+                value={payment}
+                type='text'
+                onChange={(e) => setPayment(e.target.value)}
+                />
+                
+                <br />
 
                 <h2 className='reigster__title'>Address</h2>
                 <label>Country/Region</label>
