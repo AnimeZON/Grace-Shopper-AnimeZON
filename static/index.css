@@ -1,0 +1,59 @@
+.nav {
+  display: flex;
+  align-items: center;
+  height: 60px;
+  background-color: #f4b660;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.nav__search {
+  display: flex;
+  width: 50%;
+  align-items: center;
+  border-radius: 24px;
+  overflow: hidden;
+  margin: 0 10px;
+  background-color: aqua;
+}
+.nav__searchInput {
+  height: 34px;
+  padding: 10px;
+  border: none;
+  width: 100%;
+}
+* {
+  margin: 0px;
+}
+.orderHistory__card {
+  background-color: #dbdbdb;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+.orderHistory__right {
+  display: flex;
+  flex-direction: column;
+}
+.orderHistory__right p {
+  margin: 0;
+  padding: 8px 0;
+}
+.orderHistory__left li {
+  display: flex;
+  align-items: center;
+  padding: 8px 0;
+}
+.orderHistory__left img {
+  width: 95;
+  height: 95px;
+  margin-right: 8px;
+}
+.orderHistory__left a {
+  color: #000;
+  text-decoration: none;
+}
+.orderHistory__left a:hover {
+  text-decoration: underline;
+}
