@@ -49,12 +49,12 @@ const Navbar = () => {
 
         {/* toogle user account action */}
         <div className='nav__links'>
-          <div onClick={toggleDropdown}>
+          <div >
             <span>
               Hello {!auth.username ? 'Guest ' : auth.email}
             </span>
             <br />
-            <p>Account</p>
+            <p onClick={toggleDropdown}>Account</p>
 
             {isOpen && (
               <>
