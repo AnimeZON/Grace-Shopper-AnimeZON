@@ -49,7 +49,7 @@ const Cart = () => {
             <LineItem key={lineItem.id} obj={lineItem} />
           )
           })}
-        </div> 
+      </div> 
         Subtotal: {`(${total} items):$${totalPrice.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`}
         <button 
         onClick={
@@ -60,9 +60,8 @@ const Cart = () => {
             navigate('/orders');
           }
         }
-      >Proceed to checkout</button>
-        })}
-      </div>
+        >Proceed to checkout</button>      
+      
       Subtotal: {`(${total} items):$${totalPrice.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`}
 
     </div>
