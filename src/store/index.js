@@ -5,6 +5,7 @@ import cart from './cart';
 import products from "./products";
 import user from "./user";
 import orders from './orders'
+import reviews from "./reviews";
 
 
 const store = configureStore({
@@ -15,6 +16,7 @@ const store = configureStore({
     products,
     user,
     orders,
+    reviews
   }
 });
 
@@ -24,4 +26,5 @@ export * from './cart';
 export * from './products';
 export * from './user'
 export * from './orders'
+export * from './reviews'
 
