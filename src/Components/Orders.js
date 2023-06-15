@@ -6,12 +6,23 @@ import { Link } from 'react-router-dom';
 const Orders = ()=> {
     const { orders } = useSelector(state => state);
     const dispatch = useDispatch();
+    const [total, setTotal] = useState([]);
+
     useEffect(() => {
         dispatch(loginWithToken()); 
+        dispatch(fetchCart())
+        .then((cart) => {
+            const orderTotal = cart.lineItems.reduce(
+                (acc, curr) => acc + curr.quantity * curr.product.price, 0);
+                setTotal(orderTotal);
+        })
+        .catch((error) => {
+            console.log(error);
+        });
      }, [dispatch]);
 
 
-    const [total, setTotal] = useState([]);
+    
     
       return (
         <div>
@@ -21,16 +32,14 @@ const Orders = ()=> {
                 <p>Order reference number:{order.id}</p>
               <div>
                 {order.lineItems.map((merch) => (
-                    <div>
-                        {console.log(merch)}
-                  <p key={merch.product.id}>
-                  <img src={merch.product.image} />
-                  {/* <p>{merch.product.image}</p> */}
+                    <div key={merch.product.id}>
+                  <p>
+                  <img src={merch.product.image} alt={merch.product.name} style={{ width: "40%", heigh: "auto" }} />
+
                     <Link to={`${merch.product.id}`}>{merch.product.name}</Link>
                   </p>
                   <p>{merch.quantity}</p>
                   <p>${merch.product.price}</p>
-                  {setTotal([...total, (merch.quantity * merch.product.price)])}
                   
                   </div>
                   
@@ -40,22 +49,10 @@ const Orders = ()=> {
           ))}
           
           <hr />
-      <p> Total USD </p>
-      ${total.reduce((acc, curr) => acc + curr, 0)}
+      <p> Total USD: ${total} </p>
 
         </div>
       )
     }
-
-//     return (
-//         <div>
-//         <pre>
-//         {
-//           JSON.stringify(orders, null, 2)
-//         }
-//         </pre>
-//         </div>
-//         )
-//   }
 
   export default Orders;
