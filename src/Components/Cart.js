@@ -57,12 +57,12 @@ const Cart = () => {
             // await dispatch(updateOrder());
             await dispatch(createOrder());
             await dispatch(fetchCart());
-            navigate('/orders');
+            navigate(`/orders/${cart.id}`);
           }
         }
         >Proceed to checkout</button>      
       
-      Subtotal: {`(${total} items):$${totalPrice.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`}
+      {/* Subtotal: {`(${total} items):$${totalPrice.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`} */}
 
     </div>
   );
