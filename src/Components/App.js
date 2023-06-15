@@ -30,7 +30,7 @@ const App = () => {
     }
   }, [auth]);
   return (
-    <div>
+    <div className='app__container'>
       <div>
         <Navbar />
       </div>
