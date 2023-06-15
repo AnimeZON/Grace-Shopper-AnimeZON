@@ -26,7 +26,7 @@ const ProductList = () => {
     
 
   return (
-    <div>
+    <div className='productList'>
       <h1>Products</h1>
       {productsList}
     </div>

@@ -61,8 +61,6 @@ const Cart = () => {
           }
         }
         >Proceed to checkout</button>      
-      
-      {/* Subtotal: {`(${total} items):$${totalPrice.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`} */}
 
     </div>
   );

@@ -57,3 +57,9 @@
 .orderHistory__left a:hover {
   text-decoration: underline;
 }
+.productList {
+display: flex;
+flex-direction: row;
+flex-wrap: wrap;
+}
+

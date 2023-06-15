@@ -29,6 +29,9 @@ const Product = conn.define('product', {
   description: {
     type: STRING,
     allowNull: false
+  },
+  anime: {
+    type: STRING,
   }
 });
 
