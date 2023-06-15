@@ -1,3 +1,4 @@
+const { validate } = require('webpack');
 const conn = require('./conn');
 const { INTEGER, UUID, UUIDV4 } = conn.Sequelize;
 
@@ -10,9 +11,16 @@ const Reviews = conn.define('review', {
   score: {
     type: INTEGER,
     defaultValue: 0,
-    allowNull: false
+    allowNull: false,
+    validate: {
+      notEmpty: true
+    }
   },
   productId: {
+    type: UUID,
+    allowNull: false
+  },
+  userId: {
     type: UUID,
     allowNull: false
   }

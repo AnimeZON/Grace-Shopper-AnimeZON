@@ -32,21 +32,4 @@ const Product = conn.define('product', {
   }
 });
 
-Product.prototype.makeReview = async function ({ score }) {
-  let review = await conn.models.review.create({
-    productId: this.id,
-    score: score
-  });
-  return review;
-}
-
-Product.prototype.getReviews = async function () {
-  let reviews = await conn.models.review.findAll({
-    where: {
-      productId: this.id
-    }
-  });
-  return reviews;
-}
-
 module.exports = Product;

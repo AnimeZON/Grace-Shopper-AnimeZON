@@ -151,6 +151,24 @@ User.prototype.getCart = async function () {
   return cart;
 }
 
+User.prototype.addReview = async function ({product, score}) {
+  let review = await conn.models.review.create({score: score, productId: product.id, userId: this.id})
+  // review = await conn.models.review.findByPk(
+  //   review.id,
+  //   {
+  //     include: [
+  //       {
+  //         model: conn.models.review,
+  //         include: [
+  //           conn.model.product
+  //         ]
+  //       }
+  //     ]
+  //   }
+  // )
+  return review;
+}
+
 User.prototype.addToCart = async function ({ product, quantity }) {
   const cart = await this.getCart();
   let lineItem = cart.lineItems.find(lineItem => {
