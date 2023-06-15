@@ -15,9 +15,9 @@ const Search = () => {
 
 
   return (
-    <div>
-      <input value={ term } placeholder='Search Animezon' onChange={ search }/>
-    </div>
+    
+      <input className='nav__searchInput' value={ term } placeholder='Search Animezon' onChange={ search }/>
+    
   )
 }
 

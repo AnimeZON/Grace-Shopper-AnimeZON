@@ -19,17 +19,20 @@ const OrderHistory = () => {
 
   return (
     <div className='history__container'>
+
       <div className='history__title'>
         <h1>Order History</h1>
       </div>
+
       <div>
         {orders.map((order) => (
-          <div key={order.id}>
+          <div className='orderHistory__Card'>
+            <div className='orderHistory__right' key={order.id}>
             <p>ORDER PLACED {order.createdAt.slice(0,10)}</p>
             <p>TOTAL ${order.total}</p>
             <p>ORDER # {order.id}</p>
             
-            <div>
+            <div className='orderHistory__left'>
               {order.lineItems.map((itm) => (
                 <li key={itm.product.id}>
                   <img src={itm.product.image} alt={itm.product.description} />
@@ -39,6 +42,8 @@ const OrderHistory = () => {
             </div><br />
 
           </div>
+          </div>
+          
         ))}
       </div>
       
