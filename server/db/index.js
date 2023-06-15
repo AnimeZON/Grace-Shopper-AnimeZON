@@ -10,6 +10,8 @@ LineItem.belongsTo(Order);
 Order.hasMany(LineItem);
 LineItem.belongsTo(Product);
 Product.hasMany(Reviews);
+Reviews.belongsTo(Product);
+Reviews.belongsTo(User)
 
 const userData1 = {
   username: 'moe',
@@ -120,5 +122,6 @@ const syncAndSeed = async () => {
 module.exports = {
   syncAndSeed,
   User,
-  Product
+  Product,
+  Reviews
 };

@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
 import { fetchCart, addItem, removeItem } from '../store/cart';
@@ -7,31 +7,36 @@ import { Link } from 'react-router-dom';
 import LineItem from './LineItem';
 import { use } from 'chai';
 
-const Cart = ()=> {
+const Cart = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { cart } = useSelector(state => state);
-  const [totalPrice, setTotalPrice] = useState(0);
-  const [total, setTotal] = useState(0); 
 
   useEffect(() => {
     dispatch(fetchCart())
-    getTotalPrice();
     // dispatch(createOrder())
   }, [dispatch]);
 
+  let total = getTotalCount();
+  let totalPrice = getTotalPrice();
 
   // {totalPrice += lineItem.quantity * lineItem.product.price}
-function getTotalPrice(){
-  let tempPrice = 0;
-  let tempCount = 0;
-  cart.lineItems.forEach((itm) => {
-    tempPrice += itm.quantity * itm.product.price;
-    tempCount += itm.quantity;
-  })
-  setTotalPrice(tempPrice);
-  setTotal(tempCount);
-}
+  function getTotalPrice() {
+    let tempPrice = 0;
+    cart.lineItems.forEach((itm) => {
+      tempPrice += itm.quantity * itm.product.price;
+    })
+    return tempPrice;
+  }
+
+  function getTotalCount() {
+    let tempCount = 0;
+    cart.lineItems.forEach((itm) => {
+      tempCount += itm.quantity;
+    })
+    return tempCount
+  }
+
 
   return (
     <div>
@@ -56,6 +61,10 @@ function getTotalPrice(){
           }
         }
       >Proceed to checkout</button>
+        })}
+      </div>
+      Subtotal: {`(${total} items):$${totalPrice.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`}
+
     </div>
   );
 };
