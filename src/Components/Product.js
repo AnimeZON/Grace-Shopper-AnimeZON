@@ -38,7 +38,7 @@ function Product(props) {
 
     return (
         <div>
-            <img src={props.obj.image} alt={props.obj.name} />
+            <img src={props.obj.image} alt={props.obj.name} style={{ width: "60%", heigh: "auto" }} />
             <Link to={`/product/${props.obj.id}`}>{props.obj.name}</Link>
             <p>{props.obj.price}</p>
             <button onClick={() => addToCart()}>Add To Cart</button>
