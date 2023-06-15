@@ -1,56 +1,49 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import {  fetchCart, createOrder, fetchOrders, loginWithToken } from '../store';
-import { Link } from 'react-router-dom';
+import {  fetchOrders } from '../store';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 
 const Orders = ()=> {
     const { orders } = useSelector(state => state);
     const dispatch = useDispatch();
-    const [total, setTotal] = useState([]);
+    const navigate = useNavigate();
+    const { id } = useParams();
+
 
     useEffect(() => {
-        dispatch(loginWithToken()); 
-        dispatch(fetchCart())
-        .then((cart) => {
-            const orderTotal = cart.lineItems.reduce(
-                (acc, curr) => acc + curr.quantity * curr.product.price, 0);
-                setTotal(orderTotal);
-        })
-        .catch((error) => {
-            console.log(error);
-        });
-     }, [dispatch]);
+        dispatch(fetchOrders())
+       
+     }, [id, dispatch]);
 
+     const order = orders.find((order) => order.id === id);
+    
+     function getTotalPrice() {
+      let tempPrice = 0;
+      order.lineItems.forEach((itm) => {
+        tempPrice += itm.quantity * itm.product.price;
+      })
+      return tempPrice;
+    }
 
-    
-    
+    let totalPrice = getTotalPrice();
       return (
         <div>
           <h1>Thank you for your order</h1>
-          {orders.map((order) => (
-            <div key={order.id}>
-                <p>Order reference number:{order.id}</p>
-              <div>
-                {order.lineItems.map((merch) => (
-                    <div key={merch.product.id}>
-                  <p>
-                  <img src={merch.product.image} alt={merch.product.name} style={{ width: "40%", heigh: "auto" }} />
-
-                    <Link to={`${merch.product.id}`}>{merch.product.name}</Link>
-                  </p>
-                  <p>{merch.quantity}</p>
-                  <p>${merch.product.price}</p>
-                  
-                  </div>
-                  
-                ))}
-              </div>
-            </div>
-          ))}
-          
-          <hr />
-      <p> Total USD: ${total} </p>
-
+    
+          <p>Order reference number:{order.id}</p>
+          <div>
+            {order.lineItems.map((item) => {
+              return (
+                <div key={item.product.id}>
+                <img src={item.product.image} alt={item.product.name} style={{ width: "40%", height: "auto" }} />
+                <Link to={`/product/${item.product.id}`}>{item.product.name}</Link>
+                <p>{item.quantity}</p>
+                <p>${(item.product.price * item.quantity).toFixed(2)}</p>
+                </div>
+              )
+            } )}
+<p>Total USD: {`$${totalPrice.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`}</p>
+          </div>
         </div>
       )
     }

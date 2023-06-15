@@ -20,7 +20,7 @@ const Navbar = () => {
     if(auth.id){
       dispatch(fetchCart());
     }
-  }, [auth]);
+  }, [auth, dispatch]);
 
   //dropdown menu logic
   const [isOpen, setIsOpen] = useState(false);

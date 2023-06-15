@@ -57,12 +57,10 @@ const Cart = () => {
             // await dispatch(updateOrder());
             await dispatch(createOrder());
             await dispatch(fetchCart());
-            navigate('/orders');
+            navigate(`/orders/${cart.id}`);
           }
         }
         >Proceed to checkout</button>      
-      
-     
 
     </div>
   );
