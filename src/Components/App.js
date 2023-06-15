@@ -30,14 +30,13 @@ const App = () => {
     }
   }, [auth]);
   return (
-    <div className='app__container'>
-      <div>
+    <div>
         <Navbar />
-      </div>
+    
 
       {
         auth.id ? (
-          <div>
+          <div className="class1">
             <Routes>
               <Route path='/editAccount' element={<EditAccount />} />
             </Routes>
@@ -45,7 +44,7 @@ const App = () => {
         ) : null
       }
 
-      <div>
+      <div className="class1">
         <Routes>
         <Route path='/search/:term' element={<ProductList />} />
         </Routes>
@@ -57,7 +56,7 @@ const App = () => {
           <Route path='/cart' element={<Cart />} />
           <Route path='/checkout' element={<Checkout />} />
           <Route path='/register' element={<RegisterAccount />} />
-          <Route path='/orders' element={<Orders />} />
+          <Route path='/orders/:id' element={<Orders />} />
           <Route path='/checkoutbutton' element={<CheckoutButton />} />
           <Route path='/orderHistory' element={<OrderHistory />} />
         </Routes>
