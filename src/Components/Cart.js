@@ -42,7 +42,6 @@ const Cart = () => {
     <div>
       {/* <Link to={'/checkoutbutton'}>Check out</Link> */}
       <h1>Cart</h1>
-      <h2>Price</h2>
       <div>
         {cart.lineItems.map((lineItem) => {
           return (
