@@ -39,12 +39,14 @@ function Product(props) {
     return (
         <div className= "singleProduct">
             <img src={props.obj.image} alt={props.obj.name} style={{ width: "500px", heigh: "500px" }} />   
-            <div>
-            <Link to={`/product/${props.obj.id}`}>{props.obj.name}</Link>
+            <div className= "productInfo">
+                <Link to={`/product/${props.obj.id}`}>{props.obj.name}</Link>
             </div>
-            <div>${props.obj.price}
-            <p>Qty:</p>
-            </div>
+            <div className= "productInfo">
+                ${props.obj.price}
+            </div>    
+            <div className= "productInfo">
+                Qty:
             <select value={quantity} onChange={(e) => setQuantity(e.target.value * 1)}>
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -58,7 +60,9 @@ function Product(props) {
                 <option value="10">10</option>
             </select>
             <button onClick={() => addToCart()}>Add To Cart</button>
-            <div>score: {averageScore.toFixed(2)}/5
+            </div>
+            <div>
+                score: {averageScore.toFixed(2)}/5 
             <select value={score} onChange={(e) => setScore(e.target.value * 1)}>
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -66,8 +70,8 @@ function Product(props) {
                 <option value="4">4</option>
                 <option value="5">5</option>
             </select>
-            </div>
             <button onClick={() => addReview()}>Submit Review</button> 
+            </div>
         </div>
     )
 }

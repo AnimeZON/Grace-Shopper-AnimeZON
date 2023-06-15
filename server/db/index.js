@@ -90,13 +90,14 @@ const userData5 = {
 
 const syncAndSeed = async () => {
   await conn.sync({ force: true });
-  const [moe, lucy, larry, luffy, zoro, nami, ethyl] = await Promise.all([
+  const [moe, lucy, larry, luffy, zoro, nami, obito, ethyl] = await Promise.all([
     User.create( userData1 ),
     User.create( userData2 ),
     User.create( userData3 ),
-    Product.create({ name: 'Luffy', image: 'https://tinyurl.com/bw9npkp7', price: 234.45, description: 'A statue of Luffy', quantity: 10 }),
+    Product.create({ name: 'Luffy', image: 'https://tinyurl.com/2p8ea67m', price: 234.45, description: 'A statue of Luffy', quantity: 10 }),
     Product.create({ name: 'Zoro', image: 'https://tinyurl.com/juzxdy6y', price: 234.45, description: 'A statue of Zoro' }),
     Product.create({ name: 'Nami', image: 'https://tinyurl.com/mrxtwcfe', price: 234.45, description: 'A statue of Nami' }),
+    Product.create({ name: 'Obito', image: 'https://tinyurl.com/2nv5essr', price: 500.00, description: 'A statue of Obito' }),
     User.create(userData4),
     User.create(userData5),
   ]);
@@ -113,7 +114,8 @@ const syncAndSeed = async () => {
     products: {
       luffy,
       zoro,
-      nami
+      nami,
+      obito
     }
   };
 };

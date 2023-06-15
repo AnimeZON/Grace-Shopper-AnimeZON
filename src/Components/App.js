@@ -31,13 +31,12 @@ const App = () => {
   }, [auth]);
   return (
     <div>
-      <div>
         <Navbar />
-      </div>
+    
 
       {
         auth.id ? (
-          <div>
+          <div className="class1">
             <Routes>
               <Route path='/editAccount' element={<EditAccount />} />
             </Routes>
@@ -45,7 +44,7 @@ const App = () => {
         ) : null
       }
 
-      <div>
+      <div className="class1">
         <Routes>
         <Route path='/search/:term' element={<ProductList />} />
         </Routes>
