@@ -30,16 +30,20 @@ const Login = ()=> {
     
   };
   return (
-    <div>
-      <h2>Login</h2>
-      <form onSubmit={ login }>
+    <div className='login__container'>
+      <h2 className='login__title'>Login</h2>
+      <form className='login__form' onSubmit={ login }>
+        <label for='username'>Username</label>
         <input
+          className='login__input'
           placeholder='username'
           value = { credentials.username }
           name = 'username'
           onChange = { onChange }
-          />
+        />
+        <label for='password'>Password</label>
         <input
+          className='login__input'
           placeholder='password'
           type='password'
           name = 'password'
