@@ -90,14 +90,17 @@ const userData5 = {
 
 const syncAndSeed = async () => {
   await conn.sync({ force: true });
-  const [moe, lucy, larry, luffy, zoro, nami, obito, ulquiorra, ichigo, chopper, pain, ethyl] = await Promise.all([
+  const [moe, lucy, larry, luffy, zoro, nami, obito, itachi, eren, ulquiorra, ichigo, chopper, pain, ethyl] = await Promise.all([
+
     User.create( userData1 ),
     User.create( userData2 ),
     User.create( userData3 ),
-    Product.create({ name: 'Luffy', image: 'https://tinyurl.com/2p8ea67m', price: 234.45, description: 'A statue of Luffy', quantity: 10 }),
-    Product.create({ name: 'Zoro', image: 'https://tinyurl.com/juzxdy6y', price: 234.45, description: 'A statue of Zoro' }),
-    Product.create({ name: 'Nami', image: 'https://tinyurl.com/mrxtwcfe', price: 234.45, description: 'A statue of Nami' }),
+    Product.create({ name: 'Luffy', image: 'https://tinyurl.com/2p8ea67m', price: 234.45, description: '【First name】:One piece Luffy Gear 5th Anime Figure 【Character】:Luffy 【Material】: PVC 【Packaging 】: color box/no box 【Size】: 20cm 【Note】: 1: due to factors such as lighting, display color deviation, personal understanding of color and other factors, it is unavoidable that there will be some color difference between the actual object and the image. 2: if you buy more than 5 pieces of products, you can contact us to give someDiscounts, it is more cost-effective to buy more than 5 pieces' }),
+    Product.create({ name: 'Zoro', image: 'https://tinyurl.com/juzxdy6y', price: 234.45, description: 'This figurine represents the famous character of Zoro, member of the crew of Luffy in the manga One Piece. Zoro is represented holding his 9 swords, ready to fight. The figurine is high quality and measures approximately 35 cm high. The details of the sculpture are neat, with a realistic painting that highlights the different elements of the figure. The nine swords are securely attached to Zoros hands and also feature authentic details.'}),
+    Product.create({ name: 'Nami', image: 'https://tinyurl.com/mrxtwcfe', price: 234.45, description: 'Inspired by the chapter 710 colorspread of the manga, Epoch Studio presents their Nami 1/4 Scale statue. Nami playfully holds a giant paintbrush while a scroll with lillustrated cherry blossoms seemingly comes to life. Effortlessly balanced on a scrolls, Nami gives that signature wink. Materials: Poly + PU + PVC + PC Product Dimensions: (Est.) H 68cm x W 49cm x L 44cm Product Weight: (Est.) 9.5kg' }),
     Product.create({ name: 'Obito', image: 'https://tinyurl.com/2nv5essr', price: 500.00, description: 'A statue of Obito' }),
+    Product.create({ name: 'Itachi', image: 'https://tinyurl.com/yn92unnn', price: 159.99, description: 'A statue of Itachi' }),
+    Product.create({ name: 'Eren', image: 'https://tinyurl.com/y99nxsh2', price: 49.99, description: 'A statue of Eren' }),
     Product.create({ name: 'Ulquiorra', image: 'https://tinyurl.com/5fyj6dz5', price: 200.00, description: 'A statue of Ulquiorra' }),
     Product.create({ name: 'Ichigo', image: 'https://tinyurl.com/54t7fvrk', price: 500.00, description: 'A statue of Ichigo' }),
     Product.create({ name: 'Chopper', image: 'https://tinyurl.com/3xjvtw6w', price: 100.00, description: 'A statue of Chopper' }),
@@ -120,6 +123,8 @@ const syncAndSeed = async () => {
       zoro,
       nami,
       obito,
+      itachi,
+      eren
       ulquiorra,
       ichigo,
       chopper,

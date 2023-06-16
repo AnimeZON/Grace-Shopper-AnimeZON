@@ -1,3 +1,6 @@
+*{
+  font-family: Calibri;
+}
 .nav {
   display: flex;
   align-items: center;
@@ -61,4 +64,11 @@
 display: flex;
 flex-direction: row;
 flex-wrap: wrap;
+}
+.productPage{
+display: flex;
+justify-content: space-evenly;
+}
+.title{
+  font-size: 100px;
 }

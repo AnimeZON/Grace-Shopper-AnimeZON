@@ -1,6 +1,6 @@
 const { DOUBLE } = require('sequelize');
 const conn = require('./conn');
-const { STRING, UUID, UUIDV4 } = conn.Sequelize;
+const { STRING, UUID, UUIDV4, TEXT } = conn.Sequelize;
 
 const Product = conn.define('product', {
   id: {
@@ -27,7 +27,7 @@ const Product = conn.define('product', {
     allowNull: false,
   },
   description: {
-    type: STRING,
+    type: TEXT,
     allowNull: false
   }
 });
