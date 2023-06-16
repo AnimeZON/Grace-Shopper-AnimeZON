@@ -90,7 +90,7 @@ const userData5 = {
 
 const syncAndSeed = async () => {
   await conn.sync({ force: true });
-  const [moe, lucy, larry, luffy, zoro, nami, obito, ethyl] = await Promise.all([
+  const [moe, lucy, larry, luffy, zoro, nami, obito, ulquiorra, ichigo, chopper, pain, ethyl] = await Promise.all([
     User.create( userData1 ),
     User.create( userData2 ),
     User.create( userData3 ),
@@ -98,6 +98,10 @@ const syncAndSeed = async () => {
     Product.create({ name: 'Zoro', image: 'https://tinyurl.com/juzxdy6y', price: 234.45, description: 'A statue of Zoro' }),
     Product.create({ name: 'Nami', image: 'https://tinyurl.com/mrxtwcfe', price: 234.45, description: 'A statue of Nami' }),
     Product.create({ name: 'Obito', image: 'https://tinyurl.com/2nv5essr', price: 500.00, description: 'A statue of Obito' }),
+    Product.create({ name: 'Ulquiorra', image: 'https://tinyurl.com/5fyj6dz5', price: 200.00, description: 'A statue of Ulquiorra' }),
+    Product.create({ name: 'Ichigo', image: 'https://tinyurl.com/54t7fvrk', price: 500.00, description: 'A statue of Ichigo' }),
+    Product.create({ name: 'Chopper', image: 'https://tinyurl.com/3xjvtw6w', price: 100.00, description: 'A statue of Chopper' }),
+    Product.create({ name: 'Pain', image: 'https://tinyurl.com/yc3rh8bf', price: 249.00, description: 'A statue of Pain' }),
     User.create(userData4),
     User.create(userData5),
   ]);
@@ -115,7 +119,11 @@ const syncAndSeed = async () => {
       luffy,
       zoro,
       nami,
-      obito
+      obito,
+      ulquiorra,
+      ichigo,
+      chopper,
+      pain
     }
   };
 };
