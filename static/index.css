@@ -1,6 +1,8 @@
 *{
   font-family: Calibri;
+  text-decoration: none;
 }
+
 .nav {
   display: flex;
   align-items: center;
@@ -64,11 +66,29 @@
 display: flex;
 flex-direction: row;
 flex-wrap: wrap;
+padding: 10px;
 }
 .productPage{
 display: flex;
 justify-content: space-evenly;
+padding: 50px;
+font-size:large;
 }
 .title{
-  font-size: 100px;
+  font-size: 80px;
+}
+.productInfo{
+  max-width: 700;
+  padding: 50px;
+}
+.checkoutDiv{
+  border: 2px solid rgb(211, 211, 211);
+  border-radius: 10px;
+  max-width: 400;
+  padding: 50px
+}
+button {
+  font-size:large;
+  background-color: #f4b660;
+  border-radius: 3px;
 }

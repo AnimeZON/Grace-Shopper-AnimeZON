@@ -39,13 +39,13 @@ function Product(props) {
     return (
         <div className= "singleProduct">
             <img src={props.obj.image} alt={props.obj.name} style={{ width: "500px", heigh: "500px" }} />   
-            <div className= "productInfo">
+            <div>
                 <Link to={`/product/${props.obj.id}`}>{props.obj.name}</Link>
             </div>
-            <div className= "productInfo">
+            <div>
                 ${props.obj.price}
             </div>    
-            <div className= "productInfo">
+            <div>
                 Qty:
             <select value={quantity} onChange={(e) => setQuantity(e.target.value * 1)}>
                 <option value="1">1</option>

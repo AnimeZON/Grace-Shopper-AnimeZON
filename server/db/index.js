@@ -124,7 +124,7 @@ const syncAndSeed = async () => {
       nami,
       obito,
       itachi,
-      eren
+      eren,
       ulquiorra,
       ichigo,
       chopper,

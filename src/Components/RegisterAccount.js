@@ -40,7 +40,7 @@ const RegisterAccount = () => {
     }
 
     return (
-        <div>
+        <div className="registerUser">
             <form onSubmit={handleSubmit}>
                 <h2>Account Info</h2>
                 <label>Username</label>
