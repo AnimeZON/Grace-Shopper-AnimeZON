@@ -87,9 +87,9 @@ const EditAccount = () => {
                 <input value={payment} onChange={(e) => setPayment(e.target.value)} />
 
                 <h3>Edit Address</h3>
-                <label>Country/Region</label>
+                {/* <label>Country/Region</label> */}
                 <div className="editAddress">
-                <input value={country} onChange={(e) => setCountry(e.target.value)} />
+                {/* <input value={country} onChange={(e) => setCountry(e.target.value)} /> */}
                 <label>Full name (First and Last name)</label>
                 <input value={fullName} onChange={(e) => setFullName(e.target.value)} />
                 <label>Phone Number</label>
