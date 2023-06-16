@@ -41,50 +41,66 @@ const RegisterAccount = () => {
                 <h2 className='register__title'>
                     Account Info
                 </h2> <br />
-                <label for='username'>Username</label>
-                <input
-                    className='register__input'
-                    value={data.username}
-                    type='text'
-                    onChange={(e) => setData({ ...data, username: e.target.value })}
-                />
+                <div className='register__userCred'>
+                  <label for='username'>Username</label>
+                  <input
+                  className='register__input'
+                  value={username}
+                  type='text'
+                  onChange={(e) => setUsername(e.target.value)}
+                  />
 
-                <label for='email'>Email</label>
-                <input
-                    className='register__input'
-                    value={data.email}
-                    type='text'
-                    onChange={(e) => setData({ ...data, email: e.target.value })}
-                />
+                  <label for='email'>Email</label>
+                  <input
+                  className='register__input'
+                  value={email}
+                  type='text'
+                  onChange={(e) => setEmail(e.target.value)}
+                  />
 
-                <label for='password'>Password</label>
-                <input
-                    className='register__input'
-                    value={data.password}
-                    type='text'
-                    onChange={(e) => setData({ ...data, password: e.target.value })}
-                />
+                  <label for='password'>Password</label>
+                  <input
+                  className='register__input'
+                  value={password}
+                  type='text'
+                  onChange={(e) => setPassword(e.target.value)}
+                  />
+                </div>
 
                 <br />
-
+                
+                <h2 className='register__title'>Address</h2> <br /><br />
                 <div className='register__address'>
-                    <h2 className='register__title'>Address</h2> <br /><br />
-                    <label>Country/Region</label>
-                    <input className='register__input' value={data.country} onChange={(e) => setData({ ...data, country: e.target.value })} />
-                    <label>Full name (First and Last name)</label>
-                    <input className='register__input' value={data.fullName} onChange={(e) => setData({ ...data, fullName: e.target.value })} />
-                    <label>Phone Number</label>
-                    <input className='register__input' value={data.phone} onChange={(e) => setData({ ...data, phone: e.target.value })} />
-                    <label>Address</label>
-                    <input className='register__input' value={data.address} onChange={(e) => setData({ ...data, address: e.target.value })} />
-                    <label>City</label>
-                    <input className='register__input' value={data.city} onChange={(e) => setData({ ...data, city: e.target.value })} />
-                    <label>State</label>
-                    <input className='register__input' value={data.contState} onChange={(e) => setData({ ...data, contState: e.target.value })} />
-                    <label>ZIP Code</label>
-                    <input className='register__input' value={data.zip} onChange={(e) => setData({ ...data, zip: e.target.value })} />
+                    
+                    <div className='register__input__container'>
+                      <label>Full name (First and Last name)</label>
+                      <input className='register__input' value={fullName} onChange={(e) => setFullName(e.target.value)} />
+                    </div>
+                    <div className='register__input__container'>
+                      <label>Phone Number</label>
+                      <input className='register__input' value={phone} onChange={(e) => setPhone(e.target.value)} />
+                    </div>
+                    <div className='register__input__container'>
+                      <label>Address</label>
+                      <input className='register__input' value={address} onChange={(e) => setAddress(e.target.value)} />
+                    </div>
+                    <div className='register__input__container'>
+                      <label>City</label>
+                      <input className='register__input' value={city} onChange={(e) => setCity(e.target.value)} />
+                    </div>
+                    <div className='register__input__container'>
+                      <label>State</label>
+                      <input className='register__input' value={contState} onChange={(e) => setContState(e.target.value)} />
+                    </div>
+                    <div className='register__input__container'>
+                      <label>ZIP Code</label>
+                      <input className='register__input' value={zip} onChange={(e) => setZip(e.target.value)} />
+                    </div>
                 </div>
-                <button>Submit</button>
+                
+                <div className='button__container'>
+                  <button disabled={username == '' || email == '' || password == '' || payment == '' || country == '' || fullName == '' || phone == '' || address == '' || city == '' || contState == '' || zip == ''}>Submit</button>
+                </div>
             </form>
         </div>
     )
