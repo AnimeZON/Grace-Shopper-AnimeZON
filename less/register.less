@@ -26,6 +26,15 @@
   }
 }
 
+.register__userCred {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  width: 100%;
+  justify-content: center;
+}
+
 .register__input {
   padding: 8px;
   outline: none;
@@ -43,8 +52,18 @@
   flex-wrap: wrap;
 }
 
-.register__address label,
-.register__address input {
+.register__input__container {
   flex-basis: 50%;
   box-sizing: border-box;
+}
+
+.register__input__container label,
+.register__input__container input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 10px;
+  outline: none;
+  border: 0;
+  // background-color: #eee;
+  border-radius: .55em;
 }
