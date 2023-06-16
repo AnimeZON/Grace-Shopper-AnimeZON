@@ -51,7 +51,7 @@ button {
   padding: 8px;
   border: 0;
   color: #fff;
-  font-size: 15px;
+  font-size: 12px;
   letter-spacing: 1px;
   text-transform: uppercase;
   cursor: pointer;
@@ -94,7 +94,7 @@ display: flex;
 flex-direction: row;
 flex-wrap: wrap;
 padding: 10px;
-
+}
 .login__container {
   width: 100%;
   background: #FFF;
@@ -121,7 +121,7 @@ padding: 10px;
     width: 600px;
   }
 }
-.login__input {
+input {
   padding: 8px;
   outline: none;
   border: 0;
@@ -203,8 +203,59 @@ font-size:large;
   max-width: 400;
   padding: 50px
 }
-button {
-  font-size:large;
-  background-color: #f4b660;
-  border-radius: 3px;
+
+.cart{
+  padding: 50px;
+  
+}
+.lineItem{
+border-top: 2px solid rgb(211, 211, 211);
+border-bottom: 2px solid rgb(211, 211, 211);
+display:flex;
+padding: 50px;
+}
+h2{
+  text-align: right;
+  padding-right: 50px;
+}
+.nameAndPrice{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding-left: 50px;
+  font-size:larger;
+}
+.divToStretch{
+  width: 2500px;
+}
+.addSomePadding{
+  padding: 50px;
+}
+.subtotal{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  font-size:larger;
+}
+.editDescription{
+  height: 700px;
+}
+.editAccount{
+  width: 100%;
+  background: #FFF;
+  border-radius: 20px;
+  position: relative;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 40px;
+}
+.editAddress{
+  display:flex;
+  flex-direction:column;
+}
+.singleOrder{
+ padding: 10px;
 }
