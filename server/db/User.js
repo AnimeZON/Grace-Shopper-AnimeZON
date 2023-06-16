@@ -46,13 +46,6 @@ const User = conn.define('user', {
       notEmpty: true
     }
   },
-  country: {
-    type: STRING,
-    allowNull: false,
-    validate: {
-      notEmpty: true
-    }
-  },
   fullName: {
     type: STRING,
     allowNull: false,

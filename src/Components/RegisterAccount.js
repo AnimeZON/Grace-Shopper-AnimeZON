@@ -12,7 +12,6 @@ const RegisterAccount = () => {
         password: '',
         address: '',
         email: '',
-        country: '',
         fullName: '',
         phone: '',
         city: '',
@@ -23,6 +22,7 @@ const RegisterAccount = () => {
     const handleSubmit = (evt) => {
         evt.preventDefault();
         if (checkData()) {
+            console.log(data)
             console.log('Fill Form')
         } else {
             dispatch(addUser({ data }));
