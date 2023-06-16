@@ -39,13 +39,6 @@ const User = conn.define('user', {
       notEmpty: true
     }
   },
-  payment: {
-    type: STRING,
-    allowNull: false,
-    validate: {
-      notEmpty: true
-    }
-  },
   email: {
     type: STRING,
     allowNull: false,
