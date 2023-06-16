@@ -39,9 +39,10 @@ const Cart = () => {
 
 
   return (
-    <div>
+    <div className="cart">
       {/* <Link to={'/checkoutbutton'}>Check out</Link> */}
       <h1>Cart</h1>
+      <h2>Price</h2>
       <div>
         {cart.lineItems.map((lineItem) => {
           return (
@@ -49,6 +50,7 @@ const Cart = () => {
           )
           })}
       </div> 
+      <div className="subtotal">
         Subtotal: {`(${total} items):$${totalPrice.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`}
         <button 
         onClick={
@@ -60,7 +62,7 @@ const Cart = () => {
           }
         }
         >Proceed to checkout</button>      
-
+      </div>
     </div>
   );
 };

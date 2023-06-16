@@ -34,15 +34,24 @@ const LineItem = (props) => {
   // }
 
   return (
-    <div>
+    <div className="lineItem">
+
+      <div>
       <img
         src={props.obj.product.image}
         alt={props.obj.product.name}
-        style={{ width: "20%", height: "auto" }}
+        style={{ width: "200px", height: "200px" }}
       />
+      </div>
+
+<div className="divToStretch">
+  <div className="nameAndPrice">
       <Link to={`/product/${props.obj.product.id}`}> {props.obj.product.name} </Link>
-      {props.obj.product.price}
-      <div>
+      <div className="cartPrice">
+      ${props.obj.product.price}
+      </div>
+      </div>
+      <div className="addSomePadding">
         <button onClick={() => dispatch(addItem({product: props.obj.product, quantity: 1}))}>+</button>
         <p>{props.obj.quantity}</p>
         <button onClick={() => dispatch(removeItem({product: props.obj.product, quantityToRemove: 1}))}>-</button>
@@ -64,6 +73,7 @@ const LineItem = (props) => {
         </select> */}
         |
         <button onClick={() => removeFromCart()}>Delete</button>
+      </div>
       </div>
     </div>
   )

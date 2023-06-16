@@ -60,9 +60,9 @@ const EditAccount = () => {
     }
 
     return (
-        <div>
+        <div className="editAccount">
             <form onSubmit={handleSubmit}>
-                <h2>Edit Account Info</h2>
+                <h3>Edit Account Info</h3>
                 <label>Username</label>
                 <input value={username} onChange={(e) => setUsername(e.target.value)} />
                 <label>Email</label>
@@ -82,12 +82,13 @@ const EditAccount = () => {
                     )
                 }
 
-                <h2>Edit Payment</h2>
+                <h3>Edit Payment</h3>
                 <label>Payment</label>
                 <input value={payment} onChange={(e) => setPayment(e.target.value)} />
 
-                <h2>Edit Address</h2>
+                <h3>Edit Address</h3>
                 <label>Country/Region</label>
+                <div className="editAddress">
                 <input value={country} onChange={(e) => setCountry(e.target.value)} />
                 <label>Full name (First and Last name)</label>
                 <input value={fullName} onChange={(e) => setFullName(e.target.value)} />
@@ -102,6 +103,7 @@ const EditAccount = () => {
                 <label>ZIP Code</label>
                 <input value={zip} onChange={(e) => setZip(e.target.value)} />
                 <button disabled={passwordChange && password == ''}>Submit</button>
+                </div>
             </form>
         </div>
     )

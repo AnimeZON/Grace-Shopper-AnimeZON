@@ -7,69 +7,84 @@ const RegisterAccount = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-    const [address, setAddress] = useState('');
-    const [payment, setPayment] = useState('');
-    const [email, setEmail] = useState('');
-    const [country, setCountry] = useState('');
-    const [fullName, setFullName] = useState('');
-    const [phone, setPhone] = useState('');
-    const [city, setCity] = useState('');
-    const [contState, setContState] = useState('');
-    const [zip, setZip] = useState('');
+    const [data, setData] = useState({
+        username: '',
+        password: '',
+        address: '',
+        email: '',
+        country: '',
+        fullName: '',
+        phone: '',
+        city: '',
+        contState: '',
+        zip: ''
+    });
 
     const handleSubmit = (evt) => {
         evt.preventDefault();
-        const data = {
-            username,
-            password,
-            address,
-            payment,
-            email,
-            country,
-            fullName,
-            phone,
-            city,
-            contState,
-            zip
-        };
+        if (checkData()) {
+            console.log('Fill Form')
+        } else {
+            dispatch(addUser({ data }));
+            navigate('/')
+        }
+    }
 
-        dispatch(addUser({ data }));
-        navigate('/')
+    const checkData = () => {
+        let isEmpty = Object.values(data).includes('');
+        return isEmpty;
     }
 
     return (
-        <div>
+        <div className='register__container'>
             <form onSubmit={handleSubmit}>
-                <h2>Account Info</h2>
-                <label>Username</label>
-                <input value={username} onChange={(e) => setUsername(e.target.value)} />
-                <label>Email</label>
-                <input value={email} onChange={(e) => setEmail(e.target.value)} />
-                <label>Password</label>
-                <input value={password} onChange={(e) => setPassword(e.target.value)} />
+                <h2 className='register__title'>
+                    Account Info
+                </h2> <br />
+                <label for='username'>Username</label>
+                <input
+                    className='register__input'
+                    value={data.username}
+                    type='text'
+                    onChange={(e) => setData({ ...data, username: e.target.value })}
+                />
 
-                <h2>Payment Info</h2>
-                <label>Payment</label>
-                <input value={payment} onChange={(e) => setPayment(e.target.value)} />
+                <label for='email'>Email</label>
+                <input
+                    className='register__input'
+                    value={data.email}
+                    type='text'
+                    onChange={(e) => setData({ ...data, email: e.target.value })}
+                />
 
-                <h2>Address</h2>
-                <label>Country/Region</label>
-                <input value={country} onChange={(e) => setCountry(e.target.value)} />
-                <label>Full name (First and Last name)</label>
-                <input value={fullName} onChange={(e) => setFullName(e.target.value)} />
-                <label>Phone Number</label>
-                <input value={phone} onChange={(e) => setPhone(e.target.value)} />
-                <label>Address</label>
-                <input value={address} onChange={(e) => setAddress(e.target.value)} />
-                <label>City</label>
-                <input value={city} onChange={(e) => setCity(e.target.value)} />
-                <label>State</label>
-                <input value={contState} onChange={(e) => setContState(e.target.value)} />
-                <label>ZIP Code</label>
-                <input value={zip} onChange={(e) => setZip(e.target.value)} />
-                <button disabled={username == '' || email == '' || password == '' || payment == '' || country == '' || fullName == '' || phone == '' || address == '' || city == '' || contState == '' || zip == ''}>Submit</button>
+                <label for='password'>Password</label>
+                <input
+                    className='register__input'
+                    value={data.password}
+                    type='text'
+                    onChange={(e) => setData({ ...data, password: e.target.value })}
+                />
+
+                <br />
+
+                <div className='register__address'>
+                    <h2 className='register__title'>Address</h2> <br /><br />
+                    <label>Country/Region</label>
+                    <input className='register__input' value={data.country} onChange={(e) => setData({ ...data, country: e.target.value })} />
+                    <label>Full name (First and Last name)</label>
+                    <input className='register__input' value={data.fullName} onChange={(e) => setData({ ...data, fullName: e.target.value })} />
+                    <label>Phone Number</label>
+                    <input className='register__input' value={data.phone} onChange={(e) => setData({ ...data, phone: e.target.value })} />
+                    <label>Address</label>
+                    <input className='register__input' value={data.address} onChange={(e) => setData({ ...data, address: e.target.value })} />
+                    <label>City</label>
+                    <input className='register__input' value={data.city} onChange={(e) => setData({ ...data, city: e.target.value })} />
+                    <label>State</label>
+                    <input className='register__input' value={data.contState} onChange={(e) => setData({ ...data, contState: e.target.value })} />
+                    <label>ZIP Code</label>
+                    <input className='register__input' value={data.zip} onChange={(e) => setData({ ...data, zip: e.target.value })} />
+                </div>
+                <button>Submit</button>
             </form>
         </div>
     )
