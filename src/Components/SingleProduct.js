@@ -73,14 +73,33 @@ const averageScore = (reviews.reduce((acc, curr) => {
         </div>
       </form>)
       : ( // NON ADMIN VIEW
-        <div>
-            <img src={item.image} alt={item.name} style={{ width: "500px", heigh: "500px" }} />
-            <div className="productInfo">
-                <Link to={`/product/${item.id}`}>{item.name}</Link>
+        <div className="productPage">
+
+          <div>
+            <img src={item.image} alt={item.name} style={{ width: "750px", heigh: "750px" }} />
+            </div>
+
+            <div>
+            <div className="title">
+                {item.name}
+            </div>
+            <div>
+                score: {averageScore.toFixed(2)}/5
+                <select value={score} onChange={(e) => setScore(e.target.value * 1)}>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+                <button onClick={() => addReview()}>Submit Review</button>
             </div>
             <div className="productInfo">
-                ${item.price}
+                Price: ${item.price}
             </div>
+            <div>{item.description}</div>
+            </div>
+            <div>
             <div className="productInfo">
                 Qty:
                 <select value={quantity} onChange={(e) => setQuantity(e.target.value * 1)}>
@@ -98,15 +117,8 @@ const averageScore = (reviews.reduce((acc, curr) => {
                 <button onClick={() => addToCart()}>Add To Cart</button>
             </div>
             <div>
-                score: {averageScore.toFixed(2)}/5
-                <select value={score} onChange={(e) => setScore(e.target.value * 1)}>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                </select>
-                <button onClick={() => addReview()}>Submit Review</button>
+            Free Shipping on all US orders. Express Shipping 10 business days. Doesn't apply to preorders.
+            </div>
             </div>
         </div>
       )
