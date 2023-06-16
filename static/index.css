@@ -1,6 +1,8 @@
 *{
   font-family: Calibri;
+  text-decoration: none;
 }
+
 .nav {
   display: flex;
   align-items: center;
@@ -86,6 +88,13 @@ button {
 .orderHistory__left a:hover {
   text-decoration: underline;
 }
+
+.productList {
+display: flex;
+flex-direction: row;
+flex-wrap: wrap;
+padding: 10px;
+
 .login__container {
   width: 100%;
   background: #FFF;
@@ -173,11 +182,29 @@ button {
 .register__address input {
   flex-basis: 50%;
   box-sizing: border-box;
+
 }
 .productPage{
 display: flex;
 justify-content: space-evenly;
+padding: 50px;
+font-size:large;
 }
 .title{
-  font-size: 100px;
+  font-size: 80px;
+}
+.productInfo{
+  max-width: 700;
+  padding: 50px;
+}
+.checkoutDiv{
+  border: 2px solid rgb(211, 211, 211);
+  border-radius: 10px;
+  max-width: 400;
+  padding: 50px
+}
+button {
+  font-size:large;
+  background-color: #f4b660;
+  border-radius: 3px;
 }

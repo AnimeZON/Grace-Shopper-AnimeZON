@@ -57,6 +57,11 @@ const averageScore = (reviews.reduce((acc, curr) => {
 
   return (
     auth.isAdmin ? (
+      <div>
+      <div>
+            <img src={item.image} alt={item.name} style={{ width: "700px", heigh: "700px" }} />
+     </div>
+
       <form onSubmit={handleSubmit}>
         <div>
           {/* <input value={image} onChange={(e) => setImage(e.target.value)} /> */}
@@ -71,15 +76,16 @@ const averageScore = (reviews.reduce((acc, curr) => {
             <input value={item.description} onChange={(e) => setItem({ ...item, description: e.target.value })} />
           </div>
         </div>
-      </form>)
+      </form>
+      </div>)
       : ( // NON ADMIN VIEW
         <div className="productPage">
 
           <div>
-            <img src={item.image} alt={item.name} style={{ width: "750px", heigh: "750px" }} />
+            <img src={item.image} alt={item.name} style={{ width: "700px", heigh: "700px" }} />
             </div>
 
-            <div>
+            <div className="productInfo">
             <div className="title">
                 {item.name}
             </div>
@@ -94,13 +100,17 @@ const averageScore = (reviews.reduce((acc, curr) => {
                 </select>
                 <button onClick={() => addReview()}>Submit Review</button>
             </div>
-            <div className="productInfo">
+            <div>
                 Price: ${item.price}
             </div>
-            <div>{item.description}</div>
+            <div>Description: {item.description}</div>
+            </div>
+
+            <div className="checkoutDiv">
+            <div>
+            Free Shipping on all US orders. Express Shipping 10 business days. Doesn't apply to preorders.
             </div>
             <div>
-            <div className="productInfo">
                 Qty:
                 <select value={quantity} onChange={(e) => setQuantity(e.target.value * 1)}>
                     <option value="1">1</option>
@@ -114,11 +124,10 @@ const averageScore = (reviews.reduce((acc, curr) => {
                     <option value="9">9</option>
                     <option value="10">10</option>
                 </select>
+                </div>
+                <div>
                 <button onClick={() => addToCart()}>Add To Cart</button>
-            </div>
-            <div>
-            Free Shipping on all US orders. Express Shipping 10 business days. Doesn't apply to preorders.
-            </div>
+                </div>
             </div>
         </div>
       )
