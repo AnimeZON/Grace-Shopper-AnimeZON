@@ -57,24 +57,30 @@ const averageScore = (reviews.reduce((acc, curr) => {
 
   return (
     auth.isAdmin ? (
+      <div className="productPage">
+
       <div>
-      <div>
-            <img src={item.image} alt={item.name} style={{ width: "700px", heigh: "700px" }} />
+        <img src={item.image} alt={item.name} style={{ width: "700px", heigh: "700px" }} />
      </div>
 
       <form onSubmit={handleSubmit}>
-        <div>
-          {/* <input value={image} onChange={(e) => setImage(e.target.value)} /> */}
-        </div>
+
         <div>
           <button>Save Changes</button>
         </div>
-        <div>
-          <div>
+
+        <div className="productInfo">
+          <div> Product Name:
             <input value={item.name} onChange={(e) => setItem({ ...item, name: e.target.value })} />
+            </div>
+            <div>
+              Price: $
             <input value={item.price} onChange={(e) => setItem({ ...item, price: e.target.value })} />
+            </div>
+            <div className="editDescription"> Description:
             <input value={item.description} onChange={(e) => setItem({ ...item, description: e.target.value })} />
           </div>
+
         </div>
       </form>
       </div>)

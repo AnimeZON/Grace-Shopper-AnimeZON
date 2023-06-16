@@ -27,22 +27,29 @@ const Orders = ()=> {
 
     let totalPrice = getTotalPrice();
       return (
-        <div>
+        <div className="singleOrder">
           <h1>Thank you for your order</h1>
     
           <p>Order reference number:{order.id}</p>
-          <div>
+          <div className="cart">
             {order.lineItems.map((item) => {
               return (
                 <div key={item.product.id}>
-                <img src={item.product.image} alt={item.product.name} style={{ width: "40%", height: "auto" }} />
+                <img src={item.product.image} alt={item.product.name} style={{ width: "100", height: "100" }} />
+               
+                <div className="divToStretch">
+               <div className="nameAndPrice">
                 <Link to={`/product/${item.product.id}`}>{item.product.name}</Link>
                 <p>{item.quantity}</p>
                 <p>${(item.product.price * item.quantity).toFixed(2)}</p>
                 </div>
+                </div>
+      </div>
               )
             } )}
-<p>Total USD: {`$${totalPrice.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`}</p>
+<div className="subtotal">
+  Total USD: {`$${totalPrice.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`}
+  </div>
           </div>
         </div>
       )

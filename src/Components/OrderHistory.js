@@ -60,7 +60,7 @@ const OrderHistory = () => {
               {order.lineItems.map((itm) => (
                 <li key={itm.product.id}>
                   <img src={itm.product.image} alt={itm.product.description} />
-                  <Link to={`${itm.product.id}`}>{itm.product.description}</Link>
+                  <Link to={`${itm.product.id}`}>{itm.product.name}</Link>
                 </li>
               ))}
             </div><br />
