@@ -7,36 +7,32 @@ const RegisterAccount = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-    const [address, setAddress] = useState('');
-    const [payment, setPayment] = useState('');
-    const [email, setEmail] = useState('');
-    const [country, setCountry] = useState('');
-    const [fullName, setFullName] = useState('');
-    const [phone, setPhone] = useState('');
-    const [city, setCity] = useState('');
-    const [contState, setContState] = useState('');
-    const [zip, setZip] = useState('');
+    const [data, setData] = useState({
+        username: '',
+        password: '',
+        address: '',
+        email: '',
+        country: '',
+        fullName: '',
+        phone: '',
+        city: '',
+        contState: '',
+        zip: ''
+    });
 
     const handleSubmit = (evt) => {
         evt.preventDefault();
-        const data = {
-            username,
-            password,
-            address,
-            payment,
-            email,
-            country,
-            fullName,
-            phone,
-            city,
-            contState,
-            zip
-        };
+        if (checkData()) {
+            console.log('Fill Form')
+        } else {
+            dispatch(addUser({ data }));
+            navigate('/')
+        }
+    }
 
-        dispatch(addUser({ data }));
-        navigate('/')
+    const checkData = () => {
+        let isEmpty = Object.values(data).includes('');
+        return isEmpty;
     }
 
     return (

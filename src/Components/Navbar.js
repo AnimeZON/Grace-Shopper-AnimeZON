@@ -68,7 +68,7 @@ const Navbar = () => {
                   </Link><br /><br />
                   {!auth.username && (
                     <Link to='/register'>
-                      <sub>Click here to register</sub>
+                      Click here to register
                     </Link>   
                   )}
                 </div>
