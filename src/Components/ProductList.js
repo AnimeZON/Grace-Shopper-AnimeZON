@@ -17,12 +17,19 @@ const ProductList = () => {
   }, [dispatch]);
 
   const productsList = products
-    .filter(product => !term || product.name.includes(term))
-    .map((product) => {
-      return (
-        <Product key={product.id} obj={product} rev={reviews} />
-      )
-    })
+  .filter(product => !term || product.name.toLowerCase().includes(term.toLowerCase()))
+  .map((product) => {
+    return (
+      <Product key={product.id} obj={product} rev={reviews} />
+    )
+  })
+  // const productsList = products
+  //   .filter(product => !term || product.name.includes(term))
+  //   .map((product) => {
+  //     return (
+  //       <Product key={product.id} obj={product} rev={reviews} />
+  //     )
+  //   })
     
 
   return (

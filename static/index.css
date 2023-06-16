@@ -1,3 +1,6 @@
+*{
+  font-family: Calibri;
+}
 .nav {
   display: flex;
   align-items: center;
@@ -170,4 +173,11 @@ button {
 .register__address input {
   flex-basis: 50%;
   box-sizing: border-box;
+}
+.productPage{
+display: flex;
+justify-content: space-evenly;
+}
+.title{
+  font-size: 100px;
 }
