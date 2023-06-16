@@ -55,7 +55,7 @@ const RegisterAccount = () => {
                   className='register__input'
                   value={data.email}
                   type='text'
-                  onChange={(e) => setData({ ...data, username: e.target.value })}
+                  onChange={(e) => setData({ ...data, email: e.target.value })}
                   />
 
                   <label for='password'>Password</label>
@@ -63,7 +63,7 @@ const RegisterAccount = () => {
                   className='register__input'
                   value={data.password}
                   type='text'
-                  onChange={(e) => setData({ ...data, username: e.target.value })}
+                  onChange={(e) => setData({ ...data, password: e.target.value })}
                   />
                 </div>
 
@@ -74,32 +74,32 @@ const RegisterAccount = () => {
                     
                     <div className='register__input__container'>
                       <label>Full name (First and Last name)</label>
-                      <input className='register__input' value={data.fullName} onChange={(e) => setData({ ...data, username: e.target.value })} />
+                      <input className='register__input' value={data.fullName} onChange={(e) => setData({ ...data, fullName: e.target.value })} />
                     </div>
                     <div className='register__input__container'>
                       <label>Phone Number</label>
-                      <input className='register__input' value={data.phone} onChange={(e) => setData({ ...data, username: e.target.value })} />
+                      <input className='register__input' value={data.phone} onChange={(e) => setData({ ...data, phone: e.target.value })} />
                     </div>
                     <div className='register__input__container'>
                       <label>Address</label>
-                      <input className='register__input' value={data.address} onChange={(e) => setData({ ...data, username: e.target.value })} />
+                      <input className='register__input' value={data.address} onChange={(e) => setData({ ...data, address: e.target.value })} />
                     </div>
                     <div className='register__input__container'>
                       <label>City</label>
-                      <input className='register__input' value={data.city} onChange={(e) => setData({ ...data, username: e.target.value })} />
+                      <input className='register__input' value={data.city} onChange={(e) => setData({ ...data, city: e.target.value })} />
                     </div>
                     <div className='register__input__container'>
                       <label>State</label>
-                      <input className='register__input' value={data.contState} onChange={(e) => setData({ ...data, username: e.target.value })} />
+                      <input className='register__input' value={data.contState} onChange={(e) => setData({ ...data, contState: e.target.value })} />
                     </div>
                     <div className='register__input__container'>
                       <label>ZIP Code</label>
-                      <input className='register__input' value={data.zip} onChange={(e) => setData({ ...data, username: e.target.value })} />
+                      <input className='register__input' value={data.zip} onChange={(e) => setData({ ...data, zip: e.target.value })} />
                     </div>
                 </div>
                 
                 <div className='button__container'>
-                  <button disabled={data.username == '' || data.email == '' || data.password == '' || data.payment == '' || data.country == '' || data.fullName == '' || phone == '' || address == '' || city == '' || contState == '' || zip == ''}>Submit</button>
+                  <button>Submit</button>
                 </div>
             </form>
         </div>
