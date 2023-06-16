@@ -53,14 +53,17 @@ const OrderHistory = () => {
               day: 'numeric'
               })}
             </p>
-            <p>TOTAL ${order.total}</p>
+            {/* <p>TOTAL ${order.total}</p> */}
             <p>ORDER # {order.id}</p>
             
             <div className='orderHistory__left'>
               {order.lineItems.map((itm) => (
                 <li key={itm.product.id}>
                   <img src={itm.product.image} alt={itm.product.description} />
+
                   <Link to={`${itm.product.id}`}>{itm.product.name}</Link>
+
+
                 </li>
               ))}
             </div><br />

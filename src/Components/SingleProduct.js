@@ -104,7 +104,7 @@ const averageScore = (reviews.reduce((acc, curr) => {
                     <option value="4">4</option>
                     <option value="5">5</option>
                 </select>
-                <button onClick={() => addReview()}>Submit Review</button>
+                <button disabled={!auth.id} onClick={() => addReview()}>Submit Review</button>
             </div>
             <div>
                 Price: ${item.price}
@@ -132,7 +132,7 @@ const averageScore = (reviews.reduce((acc, curr) => {
                 </select>
                 </div>
                 <div>
-                <button onClick={() => addToCart()}>Add To Cart</button>
+                <button disabled={!auth.id} onClick={() => addToCart()}>Add To Cart</button>
                 </div>
             </div>
         </div>
