@@ -45,25 +45,25 @@ const RegisterAccount = () => {
                   <label for='username'>Username</label>
                   <input
                   className='register__input'
-                  value={username}
+                  value={data.username}
                   type='text'
-                  onChange={(e) => setUsername(e.target.value)}
+                  onChange={(e) => setData({ ...data, username: e.target.value })}
                   />
 
                   <label for='email'>Email</label>
                   <input
                   className='register__input'
-                  value={email}
+                  value={data.email}
                   type='text'
-                  onChange={(e) => setEmail(e.target.value)}
+                  onChange={(e) => setData({ ...data, username: e.target.value })}
                   />
 
                   <label for='password'>Password</label>
                   <input
                   className='register__input'
-                  value={password}
+                  value={data.password}
                   type='text'
-                  onChange={(e) => setPassword(e.target.value)}
+                  onChange={(e) => setData({ ...data, username: e.target.value })}
                   />
                 </div>
 
@@ -74,32 +74,32 @@ const RegisterAccount = () => {
                     
                     <div className='register__input__container'>
                       <label>Full name (First and Last name)</label>
-                      <input className='register__input' value={fullName} onChange={(e) => setFullName(e.target.value)} />
+                      <input className='register__input' value={data.fullName} onChange={(e) => setData({ ...data, username: e.target.value })} />
                     </div>
                     <div className='register__input__container'>
                       <label>Phone Number</label>
-                      <input className='register__input' value={phone} onChange={(e) => setPhone(e.target.value)} />
+                      <input className='register__input' value={data.phone} onChange={(e) => setData({ ...data, username: e.target.value })} />
                     </div>
                     <div className='register__input__container'>
                       <label>Address</label>
-                      <input className='register__input' value={address} onChange={(e) => setAddress(e.target.value)} />
+                      <input className='register__input' value={data.address} onChange={(e) => setData({ ...data, username: e.target.value })} />
                     </div>
                     <div className='register__input__container'>
                       <label>City</label>
-                      <input className='register__input' value={city} onChange={(e) => setCity(e.target.value)} />
+                      <input className='register__input' value={data.city} onChange={(e) => setData({ ...data, username: e.target.value })} />
                     </div>
                     <div className='register__input__container'>
                       <label>State</label>
-                      <input className='register__input' value={contState} onChange={(e) => setContState(e.target.value)} />
+                      <input className='register__input' value={data.contState} onChange={(e) => setData({ ...data, username: e.target.value })} />
                     </div>
                     <div className='register__input__container'>
                       <label>ZIP Code</label>
-                      <input className='register__input' value={zip} onChange={(e) => setZip(e.target.value)} />
+                      <input className='register__input' value={data.zip} onChange={(e) => setData({ ...data, username: e.target.value })} />
                     </div>
                 </div>
                 
                 <div className='button__container'>
-                  <button disabled={username == '' || email == '' || password == '' || payment == '' || country == '' || fullName == '' || phone == '' || address == '' || city == '' || contState == '' || zip == ''}>Submit</button>
+                  <button disabled={data.username == '' || data.email == '' || data.password == '' || data.payment == '' || data.country == '' || data.fullName == '' || phone == '' || address == '' || city == '' || contState == '' || zip == ''}>Submit</button>
                 </div>
             </form>
         </div>
